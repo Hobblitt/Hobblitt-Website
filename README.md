@@ -38,6 +38,170 @@ Hobblitt-Website/
 
 ---
 
+## UI Architecture
+
+Shared UI components are maintained in:
+
+```text
+packages/ui
+```
+
+The package is available through:
+
+```text
+@hobblitt/ui
+```
+
+### Shared UI Components
+
+Generic and reusable UI components belong in:
+
+```text
+packages/ui/src/components/
+```
+
+Examples:
+
+- Button
+- Card
+- Dialog
+- Input
+- Badge
+- Dropdown Menu
+
+These components are managed using shadcn/ui.
+
+### Web-Specific Components
+
+Components specific to the Hobblitt website belong in:
+
+```text
+apps/web/components/
+```
+
+Examples:
+
+- Navbar
+- Hero
+- MemberCard
+- EventCard
+- Footer
+- Hobblitt-specific sections
+
+### Component Rule
+
+> Generic/reusable → `packages/ui`
+>
+> Hobblitt-specific → `apps/web/components`
+
+---
+
+## shadcn/ui
+
+Hobblitt uses shadcn/ui with:
+
+- Base UI
+- Nova preset
+- Lucide icons
+- Tailwind CSS v4
+
+There are two `components.json` files:
+
+```text
+apps/web/components.json
+packages/ui/components.json
+```
+
+The `apps/web` configuration is used when running the shadcn CLI, while `packages/ui` contains the shared component configuration.
+
+### Adding Shared UI Components
+
+Run shadcn commands from the web workspace:
+
+```bash
+cd apps/web
+pnpm dlx shadcn@latest add <component>
+```
+
+For example:
+
+```bash
+pnpm dlx shadcn@latest add card
+pnpm dlx shadcn@latest add dialog
+pnpm dlx shadcn@latest add dropdown-menu
+```
+
+Shared components should be created inside:
+
+```text
+packages/ui/src/components/
+```
+
+### From the Repository Root
+
+If you are already at the repository root, specify the web workspace:
+
+```bash
+pnpm dlx shadcn@latest add card -c apps/web
+```
+
+Do not run `shadcn add` from the monorepo root without specifying a workspace.
+
+---
+
+## Dependencies
+
+Dependencies should be installed in the workspace that actually uses them.
+
+### Web
+
+Frontend-specific dependencies belong in:
+
+```text
+apps/web/package.json
+```
+
+Examples:
+
+- Next.js
+- React
+- Next.js-specific libraries
+
+### API
+
+Backend-specific dependencies belong in:
+
+```text
+apps/api/package.json
+```
+
+Examples:
+
+- Express
+- CORS
+- dotenv
+
+### Shared UI
+
+Dependencies required by shared UI components belong in:
+
+```text
+packages/ui/package.json
+```
+
+Examples:
+
+- Base UI
+- Lucide
+- class-variance-authority
+- clsx
+- tailwind-merge
+- tw-animate-css
+
+> Do not install every dependency into `packages/`. A dependency belongs to the workspace that actually uses it.
+
+---
+
 ## Getting Started
 
 ### Prerequisites
