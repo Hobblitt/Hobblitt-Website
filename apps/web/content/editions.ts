@@ -70,7 +70,7 @@ export const editions: Edition[] = [
     image: {
       src: "/editions/web-architecture.png",
       alt: "Crews raising a vast steel-lattice tower over a city skyline, drawn as a two-colour comic plate.",
-      bgColor: "#e8dcc8"
+      bgColor: "#e8dcc8",
     },
   },
   {
@@ -176,11 +176,11 @@ export const editions: Edition[] = [
     },
   },
   {
-    id: "social-media-management",
-    name: "Social Media Management",
+    id: "digital-distribution",
+    name: "Digital Distribution",
     kicker: "Spreading the word on every corner.",
     description:
-      "Curating, designing, and distributing engaging content across all major social platforms to build community.",
+      "Architecting social systems and distributing content that builds trust, community, and momentum across the digital landscape.",
     whatsIncluded: [
       "Content calendar creation",
       "Asset design",
@@ -196,18 +196,18 @@ export const editions: Edition[] = [
     },
   },
   {
-    id: "event-coverage",
-    name: "Event Coverage",
+    id: "community-media",
+    name: "Community & Event Media",
     kicker: "Capturing the headline moments.",
     description:
-      "Professional on-the-ground media production, photography, and live reporting for your most important events.",
+      "On-the-ground technical reporting and media production that turns isolated events into lasting digital ecosystems and inbound momentum.",
     whatsIncluded: [
       "Live photography",
       "Highlight reels",
       "Social media takeovers",
       "Post-event recaps",
     ],
-    idealFor: "Corporate events & activations",
+    idealFor: "Tech events & activations",
     icon: Camera,
     accent: "blueprint",
     image: {
@@ -216,11 +216,11 @@ export const editions: Edition[] = [
     },
   },
   {
-    id: "kitchen-sink",
-    name: "The Kitchen Sink Service",
-    kicker: "Want more? Just ask.",
+    id: "special-operations",
+    name: "Special Operations (Bespoke)",
+    kicker: "Off-menu solutions for unprecedented problems.",
     description:
-      "Wait, there's more? If it involves ink, code, or sheer audacity and isn't on this list, just ask. We probably do that too.",
+      "If your problem defies categorization, it requires a bespoke solution. From proprietary internal tools to experimental tech stacks, if it requires code and audacity, we build it.",
     whatsIncluded: [],
     idealFor: "The person who wants everything",
     icon: Package,
