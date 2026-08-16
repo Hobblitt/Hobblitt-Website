@@ -267,6 +267,54 @@
   background-size: 7px 7px;
 }
 
+/* Comic speech balloon — a hard-ruled panel with an ink tail at lower start.
+   The tail is two stacked CSS triangles: the outer draws the rule, the inner
+   fills it back with paper, so both track the light/dark plate. Give the
+   element bottom clearance for the tail (`mb-4` or more). */
+@utility speech-bubble {
+  position: relative;
+  border: 3px solid var(--color-ink);
+  background-color: var(--color-paper-bright);
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -15px;
+    inset-inline-start: 30px;
+    border-width: 15px 15px 0;
+    border-style: solid;
+    border-color: var(--color-ink) transparent transparent transparent;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    inset-inline-start: 33px;
+    border-width: 10px 10px 0;
+    border-style: solid;
+    border-color: var(--color-paper-bright) transparent transparent transparent;
+    z-index: 1;
+  }
+}
+
+/* Ten-point star burst for "POW!" stamps. Apply to a square box — the
+   clip-path is expressed in percentages, so it scales with the element. */
+@utility pow-badge {
+  clip-path: polygon(
+    50% 0%,
+    61% 35%,
+    98% 35%,
+    68% 57%,
+    79% 91%,
+    50% 70%,
+    21% 91%,
+    32% 57%,
+    2% 35%,
+    39% 35%
+  );
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
