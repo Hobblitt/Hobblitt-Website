@@ -76,6 +76,13 @@
   --color-highlight-dim: #e3c600;
   --color-highlight-ink: #211b00;
 
+  /* --- Blueprint (cold second plate) ---
+     The only colour outside ink + press yellow. Reserved for accent chips
+     that need to break up a long run of yellow, never for body surfaces. */
+  --color-blueprint: #dce1ff;
+  --color-blueprint-dim: #b6c4ff;
+  --color-blueprint-ink: #001551;
+
   /* --- Editorial type scale ---
      display  → lead headline
      headline → section headline

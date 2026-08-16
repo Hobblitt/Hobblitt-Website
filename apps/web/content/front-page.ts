@@ -42,7 +42,7 @@ export const services: Service[] = [
     title: "Web Arch.",
     summary:
       "Robust, scalable platforms built on solid columnar foundations.",
-    href: "/editions/web-architecture",
+    href: "/editions#web-architecture",
     icon: Globe,
   },
   {
@@ -50,7 +50,7 @@ export const services: Service[] = [
     title: "Mobile Ops",
     summary:
       "Tactile, highly responsive applications for the modern commuter.",
-    href: "/editions/mobile-operations",
+    href: "/editions#mobile-ops",
     icon: Smartphone,
   },
   {
@@ -58,7 +58,7 @@ export const services: Service[] = [
     title: "AI Systems",
     summary:
       "Integrating generative logic to automate the mundane and elevate the creative.",
-    href: "/editions/ai-systems",
+    href: "/editions#ai-systems",
     icon: Bot,
   },
 ];
