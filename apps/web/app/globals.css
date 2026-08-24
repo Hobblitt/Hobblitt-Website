@@ -1,17 +1,23 @@
 @import "tailwindcss";
 
-/* =========================================================
-   HOBBLITT — BRAND TOKENS
-   ========================================================= */
+/* ============================================================
+   HOBBLITT — DESIGN SYSTEM TOKENS
+   Source: Stage 2 — Website Design & Experience Specification
+   Section 19 — Design System: Color & Typography (FINALIZED)
+   ============================================================ */
+
 
 :root {
-  --hobblitt-graphite: #0b1120;
-  --hobblitt-blue: #22b8f0;
+  /* ---- Color roles ------------------------------------------------- */
+  --hobblitt-graphite: #111827;    /* bg (dark sections), primary text (light sections) */
+  --hobblitt-blue: #22b8f0;        /* primary action, active state, key accents */
+  --hobblitt-off-white: #f8fafc;   /* bg (light sections), text on dark */
+  --hobblitt-slate: #94a3b8;       /* secondary text, captions, disabled */
+  --hobblitt-light-grey: #e2e8f0;  /* borders, dividers, surface fills */
+  --hobblitt-violet: #7c3aed;      /* rare emphasis — Automate, Open Decision only */
 
-  --hobblitt-off-white: #f1f4f7;
-
-  --hobblitt-slate: #94a3b8;
-  --hobblitt-body-slate: #64748b;
+  /* Ratio guide from spec: ~70% Graphite/Off White, 20% Slate/Light Grey,
+     10% Brand Blue (Violet used sparingly within that 10%). */
 }
 
 * {
@@ -40,124 +46,92 @@ a {
 }
 
 /* =========================================================
+   TYPOGRAPHY ROLES (spec section 19)
+   ========================================================= */
+
+/* Display — League Spartan Black — hero headline only */
+.type-display {
+  font-family: var(--font-league-spartan), sans-serif;
+  font-weight: 900;
+  letter-spacing: -0.055em;
+  line-height: 0.88;
+}
+
+/* H1 — League Spartan Bold — section titles */
+.type-h1 {
+  font-family: var(--font-league-spartan), sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  line-height: 0.9;
+}
+
+/* H2 / H3 — League Spartan SemiBold — sub-section, card titles */
+.type-h2,
+.type-h3 {
+  font-family: var(--font-league-spartan), sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.035em;
+}
+
+/* Body — DM Sans Regular — paragraphs, descriptions */
+.type-body {
+  font-family: var(--font-dm-sans), sans-serif;
+  font-weight: 400;
+}
+
+/* Caption / Label — DM Sans Bold, small, tracked — eyebrows, tags, captions */
+.type-caption,
+.section-label {
+  font-family: var(--font-dm-sans), sans-serif;
+  font-weight: 700;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+/* Navigation / CTA — DM Sans Bold — nav links, buttons */
+.type-nav {
+  font-family: var(--font-dm-sans), sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+
+/* =========================================================
    HERO GRID
    ========================================================= */
 
 .hero-grid {
   background-image:
-    linear-gradient(
-      to right,
-      rgba(148, 163, 184, 0.18) 1px,
-      transparent 1px
-    ),
-    linear-gradient(
-      to bottom,
-      rgba(148, 163, 184, 0.18) 1px,
-      transparent 1px
-    );
-
+    linear-gradient(to right, rgba(148, 163, 184, 0.18) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(148, 163, 184, 0.18) 1px, transparent 1px);
   background-size: 72px 72px;
-
-  mask-image: radial-gradient(
-    ellipse 70% 70% at 50% 50%,
-    black 10%,
-    transparent 80%
-  );
-
-  -webkit-mask-image: radial-gradient(
-    ellipse 70% 70% at 50% 50%,
-    black 10%,
-    transparent 80%
-  );
+  mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 10%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 10%, transparent 80%);
 }
 
 /* =========================================================
-   TYPOGRAPHY
-   ========================================================= */
-
-.font-display {
-  font-family: var(--font-space-grotesk), sans-serif;
-  letter-spacing: -0.045em;
-}
-
-.font-body {
-  font-family: var(--font-dm-sans), sans-serif;
-}
-
-.font-stamp {
-  font-family: var(--font-space-mono), monospace;
-  letter-spacing: 0.16em;
-}
-
-/* =========================================================
-   NAVIGATION
-   ========================================================= */
-
-nav .font-stamp {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-}
-
-/* =========================================================
-   SECTION LABELS
-   ========================================================= */
-
-[data-section-label],
-.section-label {
-  font-family: var(--font-space-mono), monospace;
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-}
-
-/* =========================================================
-   SIGNAL SYSTEM
+   SIGNAL SYSTEM (hero + capability motif)
    ========================================================= */
 
 .signal-ring {
   animation: signalPulse 5s ease-in-out infinite;
 }
-
-.signal-ring-one {
-  animation-delay: 0s;
-}
-
-.signal-ring-two {
-  animation-delay: 0.7s;
-}
-
-.signal-ring-three {
-  animation-delay: 1.4s;
-}
+.signal-ring-one { animation-delay: 0s; }
+.signal-ring-two { animation-delay: 0.7s; }
+.signal-ring-three { animation-delay: 1.4s; }
 
 .signal-core {
   animation: signalFloat 4s ease-in-out infinite;
 }
 
 @keyframes signalPulse {
-  0%,
-  100% {
-    opacity: 0.35;
-    transform: scale(0.98);
-  }
-
-  50% {
-    opacity: 0.8;
-    transform: scale(1.02);
-  }
+  0%, 100% { opacity: 0.35; transform: scale(0.98); }
+  50% { opacity: 0.8; transform: scale(1.02); }
 }
 
 @keyframes signalFloat {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-8px);
-  }
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
 }
 
 /* =========================================================
@@ -165,46 +139,22 @@ nav .font-stamp {
    ========================================================= */
 
 .work-project-visual {
-  background-color: #0b1120;
-
+  background-color: var(--hobblitt-graphite);
   background-image:
-    linear-gradient(
-      to right,
-      rgba(148, 163, 184, 0.08) 1px,
-      transparent 1px
-    ),
-    linear-gradient(
-      to bottom,
-      rgba(148, 163, 184, 0.08) 1px,
-      transparent 1px
-    );
-
+    linear-gradient(to right, rgba(148, 163, 184, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
   background-size: 54px 54px;
 }
 
 .work-signal-ring {
   animation: workSignalPulse 5s ease-in-out infinite;
 }
-
-.work-signal-ring-delay-1 {
-  animation-delay: 0.7s;
-}
-
-.work-signal-ring-delay-2 {
-  animation-delay: 1.4s;
-}
+.work-signal-ring-delay-1 { animation-delay: 0.7s; }
+.work-signal-ring-delay-2 { animation-delay: 1.4s; }
 
 @keyframes workSignalPulse {
-  0%,
-  100% {
-    opacity: 0.35;
-    transform: scale(0.98);
-  }
-
-  50% {
-    opacity: 0.75;
-    transform: scale(1.02);
-  }
+  0%, 100% { opacity: 0.35; transform: scale(0.98); }
+  50% { opacity: 0.75; transform: scale(1.02); }
 }
 
 /* =========================================================
@@ -228,10 +178,7 @@ a {
   html {
     scroll-behavior: auto;
   }
-
-  *,
-  *::before,
-  *::after {
+  *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
@@ -243,20 +190,7 @@ a {
    ========================================================= */
 
 @media (max-width: 767px) {
-  .hero-grid {
-    background-size: 48px 48px;
-  }
-
-  .font-stamp {
-    letter-spacing: 0.14em;
-  }
-
-  nav .font-stamp {
-    font-size: 9px;
-    letter-spacing: 0.12em;
-  }
-
-  .work-project-visual {
-    background-size: 42px 42px;
-  }
+  .hero-grid { background-size: 48px 48px; }
+  .type-caption { letter-spacing: 0.16em; }
+  .work-project-visual { background-size: 42px 42px; }
 }
