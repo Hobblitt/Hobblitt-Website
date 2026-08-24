@@ -5,19 +5,19 @@ import { cn } from "@hobblitt/ui/lib/utils";
 const navigation = [
   {
     label: "ABOUT",
-    href: "#about",
+    href: "/about",
   },
   {
     label: "CAPABILITIES",
-    href: "#capabilities",
-  },
-  {
-    label: "WORK",
-    href: "#work",
+    href: "/capabilities",
   },
   {
     label: "APPROACH",
-    href: "#approach",
+    href: "/approach",
+  },
+  {
+    label: "PRICING",
+    href: "/pricing",
   },
 ];
 

@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 
 import { cn } from "@hobblitt/ui/lib/utils";
@@ -13,25 +12,24 @@ const mobileNavigation = [
   {
     number: "01",
     label: "ABOUT",
-    href: "#about",
+    href: "/about",
   },
   {
     number: "02",
     label: "CAPABILITIES",
-    href: "#capabilities",
+    href: "/capabilities",
   },
   {
     number: "03",
-    label: "WORK",
-    href: "#work",
+    label: "APPROACH",
+    href: "/approach",
   },
   {
     number: "04",
-    label: "APPROACH",
-    href: "#approach",
+    label: "PRICING",
+    href: "/pricing",
   },
 ];
-
 export function SiteHeader({ className }: { className?: string }) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [headerVisible, setHeaderVisible] = useState(true);

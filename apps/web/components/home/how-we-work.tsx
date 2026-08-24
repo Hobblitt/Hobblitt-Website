@@ -45,7 +45,7 @@ export function HowWeWork() {
           {/* Content */}
           <div>
             <p className="mb-5 font-stamp text-[10px] uppercase tracking-[0.16em] text-slate-400">
-              DON'T BRING US A BRIEF.
+              DON&apos;T BRING US A BRIEF.
             </p>
 
             <h2 className="max-w-4xl font-display text-4xl font-bold leading-[0.98] tracking-[-0.045em] text-[#f8fafc] md:text-6xl lg:text-7xl">
@@ -53,9 +53,10 @@ export function HowWeWork() {
             </h2>
 
             <p className="mt-8 max-w-2xl font-body text-base leading-7 text-slate-400 md:text-lg">
-              You don't need to know exactly what you need before you call us.
-              Tell us where you're stuck. We listen, understand the business,
-              bring together the right capabilities, and build with you.
+              You don&apos;t need to know exactly what you need before you call
+              us. Tell us where you&apos;re stuck. We listen, understand the
+              business, bring together the right capabilities, and build with
+              you.
             </p>
 
             <div className="mt-16 grid border border-slate-700/50 md:grid-cols-2">
