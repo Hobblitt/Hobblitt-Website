@@ -1,58 +1,256 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
+import { ArrowUpRight, Menu, X } from "lucide-react";
+
 import { cn } from "@hobblitt/ui/lib/utils";
+
+import { BrandLogo } from "@/components/brand/brand-logo";
 import { PrimaryNav } from "@/components/layout/primary-nav";
-import { SearchTrigger } from "@/components/layout/search-trigger";
-import { SiteMenu } from "@/components/layout/site-menu";
-import { siteConfig } from "@/lib/site-config";
 
-/**
- * The masthead: index button, wordmark and archive search, over a ruled
- * section index flanked by the edition dateline.
- */
+const mobileNavigation = [
+  {
+    number: "01",
+    label: "ABOUT",
+    href: "#about",
+  },
+  {
+    number: "02",
+    label: "CAPABILITIES",
+    href: "#capabilities",
+  },
+  {
+    number: "03",
+    label: "WORK",
+    href: "#work",
+  },
+  {
+    number: "04",
+    label: "APPROACH",
+    href: "#approach",
+  },
+];
+
 export function SiteHeader({ className }: { className?: string }) {
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  const closeMobileMenu = () => {
+    setMobileOpen(false);
+  };
+
   return (
-    <header
-      className={cn(
-        "sticky top-0 z-40 border-b-2 border-ink bg-paper shadow-ink",
-        className,
-      )}
-    >
-      <div className="mx-auto w-full max-w-screen-2xl px-margin py-3">
-        <div className="flex w-full flex-wrap items-center gap-3">
-          <SiteMenu />
+    <>
+      {/* =========================================================
+          DESKTOP / GLOBAL HEADER
+      ========================================================= */}
 
-          <Link
-            href="/"
-            className={cn(
-              "flex-1 text-center font-display uppercase leading-none tracking-tighter text-ink",
-              "text-[1.75rem] md:text-display",
-              "focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink",
-            )}
-          >
-            <span className="border-b-4 border-ink pb-1">
-              {siteConfig.masthead}
-            </span>
-            <span className="sr-only"> — home</span>
-          </Link>
+      <header
+        className={cn(
+          "fixed inset-x-0 top-0 z-50",
+          "h-[76px]",
+          "border-b border-white/[0.08]",
+          "bg-[#0B1120]/90 backdrop-blur-xl",
+          className,
+        )}
+      >
+        <div className="mx-auto flex h-full w-full max-w-screen-2xl items-center justify-between px-margin">
+          {/* =====================================================
+              BRAND
+          ===================================================== */}
 
-          <SearchTrigger />
-        </div>
+          <BrandLogo priority />
 
-        {/* Section index — mobile navigates via the drawer and tab bar. */}
-        <div className="mt-4 hidden grid-cols-[1fr_auto_1fr] items-center gap-2 border-y-2 border-ink py-2 md:grid">
-          <span className="font-stamp text-stamp uppercase text-ink-muted">
-            Est. {siteConfig.founded}
-          </span>
+          {/* =====================================================
+              DESKTOP NAV
+          ===================================================== */}
 
-          <nav aria-label="Sections">
+          <div className="hidden items-center gap-8 md:flex">
             <PrimaryNav />
+
+            <div className="h-5 w-px bg-white/10" />
+
+            <a
+              href="mailto:hello@hobblitt.com"
+              className="
+                group
+                inline-flex
+                h-10
+                items-center
+                gap-3
+                border
+                border-[#22B8F0]/50
+                px-4
+                font-mono
+                text-[9px]
+                font-bold
+                tracking-[0.16em]
+                text-[#22B8F0]
+                transition-all
+                duration-300
+                hover:border-[#22B8F0]
+                hover:bg-[#22B8F0]
+                hover:text-[#07111D]
+              "
+            >
+              SUMMON HOBBLITT
+              <ArrowUpRight
+                className="
+                  size-3
+                  transition-transform
+                  duration-300
+                  group-hover:translate-x-0.5
+                  group-hover:-translate-y-0.5
+                "
+                aria-hidden="true"
+              />
+            </a>
+          </div>
+
+          {/* =====================================================
+              MOBILE MENU BUTTON
+          ===================================================== */}
+
+          <button
+            type="button"
+            aria-label={mobileOpen ? "Close navigation" : "Open navigation"}
+            aria-expanded={mobileOpen}
+            aria-controls="mobile-navigation"
+            onClick={() => setMobileOpen((value) => !value)}
+            className="
+              flex
+              h-10
+              w-10
+              items-center
+              justify-center
+              border
+              border-white/15
+              text-[#F8FAFC]
+              transition-colors
+              hover:border-[#22B8F0]
+              hover:text-[#22B8F0]
+              md:hidden
+            "
+          >
+            {mobileOpen ? (
+              <X className="size-4" aria-hidden="true" />
+            ) : (
+              <Menu className="size-4" aria-hidden="true" />
+            )}
+          </button>
+        </div>
+      </header>
+
+      {/* =========================================================
+          MOBILE NAVIGATION
+      ========================================================= */}
+
+      <div
+        id="mobile-navigation"
+        aria-hidden={!mobileOpen}
+        className={cn(
+          "fixed inset-0 z-40 bg-[#0B1120] transition-all duration-300 md:hidden",
+          mobileOpen
+            ? "pointer-events-auto opacity-100"
+            : "pointer-events-none opacity-0",
+        )}
+      >
+        <div className="flex h-full flex-col px-margin pb-10 pt-28">
+          {/* Eyebrow */}
+          <div className="flex items-center gap-3">
+            <span className="h-px w-8 bg-[#22B8F0]" />
+
+            <span className="font-mono text-[8px] font-bold tracking-[0.25em] text-[#22B8F0]">
+              HOBBLITT / INDEX
+            </span>
+          </div>
+
+          {/* Navigation */}
+          <nav aria-label="Mobile navigation" className="mt-12">
+            <ul className="flex flex-col">
+              {mobileNavigation.map((item) => (
+                <li key={item.href}>
+                  <a
+                    href={item.href}
+                    onClick={closeMobileMenu}
+                    className="
+                      group
+                      flex
+                      items-center
+                      justify-between
+                      border-b
+                      border-white/10
+                      py-6
+                    "
+                  >
+                    <span className="flex items-center gap-5">
+                      <span className="font-mono text-[8px] text-[#64748B]">
+                        {item.number}
+                      </span>
+
+                      <span
+                        className="
+                          font-[var(--font-space-grotesk)]
+                          text-3xl
+                          font-bold
+                          tracking-[-0.03em]
+                          text-[#F8FAFC]
+                          transition-colors
+                          duration-300
+                          group-hover:text-[#22B8F0]
+                        "
+                      >
+                        {item.label}
+                      </span>
+                    </span>
+
+                    <ArrowUpRight
+                      className="
+                        size-5
+                        text-[#64748B]
+                        transition-all
+                        duration-300
+                        group-hover:-translate-y-1
+                        group-hover:translate-x-1
+                        group-hover:text-[#22B8F0]
+                      "
+                      aria-hidden="true"
+                    />
+                  </a>
+                </li>
+              ))}
+            </ul>
           </nav>
 
-          <span className="text-right font-stamp text-stamp uppercase text-ink-muted">
-            Vol. LXXII — No. 04
-          </span>
+          {/* Bottom CTA */}
+          <div className="mt-auto">
+            <p className="mb-4 font-mono text-[8px] tracking-[0.2em] text-[#64748B]">
+              GOT SOMETHING WORTH BUILDING?
+            </p>
+
+            <a
+              href="mailto:hello@hobblitt.com"
+              onClick={closeMobileMenu}
+              className="
+                flex
+                h-14
+                items-center
+                justify-between
+                bg-[#22B8F0]
+                px-5
+                font-mono
+                text-[9px]
+                font-bold
+                tracking-[0.18em]
+                text-[#07111D]
+              "
+            >
+              SUMMON HOBBLITT
+              <ArrowUpRight className="size-4" aria-hidden="true" />
+            </a>
+          </div>
         </div>
       </div>
-    </header>
+    </>
   );
 }

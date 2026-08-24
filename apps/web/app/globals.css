@@ -1,327 +1,250 @@
 @import "tailwindcss";
-@import "tw-animate-css";
-@import "shadcn/tailwind.css";
 
-@custom-variant dark (&:is(.dark *));
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-sans);
-  --font-mono: var(--font-mono);
-  --font-heading: var(--font-display);
-  --color-sidebar-ring: var(--sidebar-ring);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar: var(--sidebar);
-  --color-chart-5: var(--chart-5);
-  --color-chart-4: var(--chart-4);
-  --color-chart-3: var(--chart-3);
-  --color-chart-2: var(--chart-2);
-  --color-chart-1: var(--chart-1);
-  --color-ring: var(--ring);
-  --color-input: var(--input);
-  --color-border: var(--border);
-  --color-destructive: var(--destructive);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-accent: var(--accent);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-muted: var(--muted);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-secondary: var(--secondary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-primary: var(--primary);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-popover: var(--popover);
-  --color-card-foreground: var(--card-foreground);
-  --color-card: var(--card);
-  --radius-sm: calc(var(--radius) * 0.6);
-  --radius-md: calc(var(--radius) * 0.8);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) * 1.4);
-  --radius-2xl: calc(var(--radius) * 1.8);
-  --radius-3xl: calc(var(--radius) * 2.2);
-  --radius-4xl: calc(var(--radius) * 2.6);
-}
-
-/* ==========================================================================
-   Hobblitt Gazette — brand layer
-   A newsprint / silver-age-comic system: black ink rules, hard offset
-   shadows, halftone texture and one high-voltage highlight yellow.
-   These tokens are additive; the shadcn semantic tokens below are re-pointed
-   at the same palette so shared @hobblitt/ui components stay on brand.
-   ========================================================================== */
-@theme {
-  /* --- Surfaces (paper) --- */
-  --color-paper: #fcf9f2;
-  --color-paper-bright: #ffffff;
-  --color-paper-dim: #dcdad3;
-  --color-newsprint: #f1eee7;
-  --color-newsprint-low: #f6f3ec;
-  --color-newsprint-high: #ebe8e1;
-
-  /* --- Ink --- */
-  --color-ink: #000000;
-  --color-ink-soft: #1c1c18;
-  --color-ink-muted: #444748;
-  --color-ink-faint: #747878;
-
-  /* --- Highlight (press yellow) --- */
-  --color-highlight: #ffe24a;
-  --color-highlight-strong: #fddc00;
-  --color-highlight-dim: #e3c600;
-  --color-highlight-ink: #211b00;
-
-  /* --- Blueprint (cold second plate) ---
-     The only colour outside ink + press yellow. Reserved for accent chips
-     that need to break up a long run of yellow, never for body surfaces. */
-  --color-blueprint: #dce1ff;
-  --color-blueprint-dim: #b6c4ff;
-  --color-blueprint-ink: #001551;
-
-  /* --- Editorial type scale ---
-     display  → lead headline
-     headline → section headline
-     title    → panel headline
-     subtitle → standfirst / deck
-     lede     → drop-cap opening paragraph
-     copy     → body text
-     stamp    → all-caps mono labels, nav, bylines */
-  --font-display: var(--font-dm-sans), "DM Sans", ui-sans-serif, system-ui,
-    sans-serif;
-  --font-serif: var(--font-source-serif), "Source Serif 4", Georgia, serif;
-  --font-stamp: var(--font-space-mono), "Space Mono", ui-monospace, monospace;
-
-  --text-display: 4rem;
-  --text-display--line-height: 1;
-  --text-display--letter-spacing: -0.04em;
-  --text-display--font-weight: 800;
-
-  --text-headline: 2.5rem;
-  --text-headline--line-height: 1.1;
-  --text-headline--letter-spacing: -0.02em;
-  --text-headline--font-weight: 800;
-
-  --text-title: 2rem;
-  --text-title--line-height: 1.1;
-  --text-title--letter-spacing: -0.02em;
-  --text-title--font-weight: 800;
-
-  --text-subtitle: 1.5rem;
-  --text-subtitle--line-height: 1.2;
-  --text-subtitle--font-weight: 700;
-
-  --text-lede: 1.25rem;
-  --text-lede--line-height: 1.6;
-  --text-lede--font-weight: 400;
-
-  --text-copy: 1rem;
-  --text-copy--line-height: 1.5;
-  --text-copy--font-weight: 400;
-
-  --text-stamp: 0.75rem;
-  --text-stamp--line-height: 1;
-  --text-stamp--letter-spacing: 0.02em;
-  --text-stamp--font-weight: 700;
-
-  /* --- Layout rhythm --- */
-  --spacing-gutter: 1.5rem;
-  --spacing-margin: 2rem;
-
-  /* --- Hard offset "printing plate" shadows --- */
-  --shadow-ink-sm: 2px 2px 0 0 var(--color-ink);
-  --shadow-ink: 4px 4px 0 0 var(--color-ink);
-  --shadow-ink-lg: 6px 6px 0 0 var(--color-ink);
-  --shadow-ink-up: 0 -4px 0 0 var(--color-ink);
-
-  /* --- Motion --- */
-  --animate-ticker: ticker 38s linear infinite;
-
-  @keyframes ticker {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(-50%);
-    }
-  }
-}
+/* =========================================================
+   HOBBLITT — BRAND TOKENS
+   ========================================================= */
 
 :root {
-  --background: var(--color-paper);
-  --foreground: var(--color-ink-soft);
-  --card: var(--color-paper-bright);
-  --card-foreground: var(--color-ink-soft);
-  --popover: var(--color-paper-bright);
-  --popover-foreground: var(--color-ink-soft);
-  --primary: var(--color-ink);
-  --primary-foreground: var(--color-paper-bright);
-  --secondary: var(--color-highlight);
-  --secondary-foreground: var(--color-highlight-ink);
-  --muted: var(--color-newsprint-high);
-  --muted-foreground: var(--color-ink-muted);
-  --accent: var(--color-highlight);
-  --accent-foreground: var(--color-highlight-ink);
-  --destructive: #ba1a1a;
-  --border: var(--color-ink);
-  --input: var(--color-ink);
-  --ring: var(--color-ink);
-  --chart-1: var(--color-highlight);
-  --chart-2: var(--color-ink);
-  --chart-3: var(--color-ink-muted);
-  --chart-4: var(--color-ink-faint);
-  --chart-5: var(--color-paper-dim);
-  --radius: 0rem;
-  --sidebar: var(--color-newsprint-low);
-  --sidebar-foreground: var(--color-ink-soft);
-  --sidebar-primary: var(--color-ink);
-  --sidebar-primary-foreground: var(--color-paper-bright);
-  --sidebar-accent: var(--color-highlight);
-  --sidebar-accent-foreground: var(--color-highlight-ink);
-  --sidebar-border: var(--color-ink);
-  --sidebar-ring: var(--color-ink);
-
-  /* next/font variables are injected on <html> in app/layout.tsx */
-  --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, -apple-system,
-    "Segoe UI", sans-serif;
-  --font-mono: var(--font-space-mono), ui-monospace, "Cascadia Mono", monospace;
+  --hobblitt-graphite: #0b1120;
+  --hobblitt-blue: #22b8f0;
+  --hobblitt-off-white: #f8fafc;
+  --hobblitt-slate: #94a3b8;
 }
 
-/* Night edition — the press run in reverse. */
-.dark {
-  --color-paper: #14140f;
-  --color-paper-bright: #1c1c18;
-  --color-paper-dim: #0c0c09;
-  --color-newsprint: #22221c;
-  --color-newsprint-low: #1c1c18;
-  --color-newsprint-high: #2b2b24;
-  --color-ink: #fcf9f2;
-  --color-ink-soft: #f3f0e9;
-  --color-ink-muted: #c4c7c7;
-  --color-ink-faint: #8b8f8f;
-
-  --background: var(--color-paper);
-  --foreground: var(--color-ink-soft);
-  --card: var(--color-paper-bright);
-  --card-foreground: var(--color-ink-soft);
-  --popover: var(--color-paper-bright);
-  --popover-foreground: var(--color-ink-soft);
-  --primary: var(--color-ink);
-  --primary-foreground: #14140f;
-  --muted: var(--color-newsprint-high);
-  --muted-foreground: var(--color-ink-muted);
-  --border: var(--color-ink);
-  --input: var(--color-ink);
-  --ring: var(--color-ink);
+* {
+  box-sizing: border-box;
 }
 
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-
-  body {
-    @apply bg-background text-foreground font-serif;
-  }
-
-  html {
-    @apply font-sans;
-  }
-
-  /* Editorial headings default to the display face. */
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    @apply font-display;
-  }
-
-  ::selection {
-    @apply bg-highlight text-highlight-ink;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
-/* Halftone dot screen — layer over imagery or flat fills. */
-@utility halftone {
-  background-image: radial-gradient(
-    circle,
-    var(--color-ink) 1px,
-    transparent 1px
+body {
+  margin: 0;
+  background: var(--hobblitt-graphite);
+  color: var(--hobblitt-off-white);
+  font-family: var(--font-dm-sans), Arial, Helvetica, sans-serif;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+  background: rgba(34, 184, 240, 0.35);
+  color: #ffffff;
+}
+
+/* =========================================================
+   HERO GRID
+   ========================================================= */
+
+.hero-grid {
+  background-image:
+    linear-gradient(
+      to right,
+      rgba(148, 163, 184, 0.18) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(148, 163, 184, 0.18) 1px,
+      transparent 1px
+    );
+
+  background-size: 72px 72px;
+
+  mask-image: radial-gradient(
+    ellipse 70% 70% at 50% 50%,
+    black 10%,
+    transparent 80%
   );
-  background-size: 4px 4px;
-}
 
-/* Coarser dot screen for large flat areas. */
-@utility halftone-coarse {
-  background-image: radial-gradient(
-    circle,
-    var(--color-ink) 1.5px,
-    transparent 1.5px
-  );
-  background-size: 7px 7px;
-}
-
-/* Comic speech balloon — a hard-ruled panel with an ink tail at lower start.
-   The tail is two stacked CSS triangles: the outer draws the rule, the inner
-   fills it back with paper, so both track the light/dark plate. Give the
-   element bottom clearance for the tail (`mb-4` or more). */
-@utility speech-bubble {
-  position: relative;
-  border: 3px solid var(--color-ink);
-  background-color: var(--color-paper-bright);
-
-  &::after {
-    content: "";
-    position: absolute;
-    bottom: -15px;
-    inset-inline-start: 30px;
-    border-width: 15px 15px 0;
-    border-style: solid;
-    border-color: var(--color-ink) transparent transparent transparent;
-  }
-
-  &::before {
-    content: "";
-    position: absolute;
-    bottom: -10px;
-    inset-inline-start: 33px;
-    border-width: 10px 10px 0;
-    border-style: solid;
-    border-color: var(--color-paper-bright) transparent transparent transparent;
-    z-index: 1;
-  }
-}
-
-/* Ten-point star burst for "POW!" stamps. Apply to a square box — the
-   clip-path is expressed in percentages, so it scales with the element. */
-@utility pow-badge {
-  clip-path: polygon(
-    50% 0%,
-    61% 35%,
-    98% 35%,
-    68% 57%,
-    79% 91%,
-    50% 70%,
-    21% 91%,
-    32% 57%,
-    2% 35%,
-    39% 35%
+  -webkit-mask-image: radial-gradient(
+    ellipse 70% 70% at 50% 50%,
+    black 10%,
+    transparent 80%
   );
 }
+
+/* =========================================================
+   HOBBLITT TYPOGRAPHY
+   ========================================================= */
+
+/*
+  Space Grotesk
+  --------------------------------
+  Used for:
+  - Hero headlines
+  - Major section headlines
+  - Service titles
+  - Brand statements
+*/
+
+.font-display {
+  font-family: var(--font-space-grotesk), sans-serif;
+}
+
+/*
+  DM Sans
+  --------------------------------
+  Used for:
+  - Body copy
+  - Supporting text
+  - Descriptions
+*/
+
+.font-body {
+  font-family: var(--font-dm-sans), sans-serif;
+}
+
+/*
+  Space Mono
+  --------------------------------
+  Used for:
+  - Navigation
+  - Section numbers
+  - Labels
+  - Metadata
+  - Small system-style text
+*/
+
+.font-stamp {
+  font-family: var(--font-space-mono), monospace;
+}
+
+/* =========================================================
+   TYPOGRAPHIC REFINEMENT
+   ========================================================= */
+
+/* Large brand / section headlines */
+.font-display {
+  letter-spacing: -0.045em;
+}
+
+/* System labels / navigation */
+.font-stamp {
+  letter-spacing: 0.16em;
+}
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+
+nav .font-stamp {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+/* =========================================================
+   SECTION LABELS
+   ========================================================= */
+
+[data-section-label],
+.section-label {
+  font-family: var(--font-space-mono), monospace;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+/* =========================================================
+   SIGNAL SYSTEM
+   ========================================================= */
+
+.signal-ring {
+  animation: signalPulse 5s ease-in-out infinite;
+}
+
+.signal-ring-one {
+  animation-delay: 0s;
+}
+
+.signal-ring-two {
+  animation-delay: 0.7s;
+}
+
+.signal-ring-three {
+  animation-delay: 1.4s;
+}
+
+.signal-core {
+  animation: signalFloat 4s ease-in-out infinite;
+}
+
+@keyframes signalPulse {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(0.98);
+  }
+
+  50% {
+    opacity: 0.8;
+    transform: scale(1.02);
+  }
+}
+
+@keyframes signalFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* =========================================================
+   LINKS / INTERACTION
+   ========================================================= */
+
+a {
+  transition:
+    color 180ms ease,
+    background-color 180ms ease,
+    border-color 180ms ease,
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
   *,
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 767px) {
+  .hero-grid {
+    background-size: 48px 48px;
+  }
+
+  .font-stamp {
+    letter-spacing: 0.14em;
+  }
+
+  nav .font-stamp {
+    font-size: 9px;
+    letter-spacing: 0.12em;
   }
 }
