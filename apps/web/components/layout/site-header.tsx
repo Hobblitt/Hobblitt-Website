@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 
@@ -34,6 +34,50 @@ const mobileNavigation = [
 
 export function SiteHeader({ className }: { className?: string }) {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [headerVisible, setHeaderVisible] = useState(true);
+
+  useEffect(() => {
+    let lastScrollY = window.scrollY;
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      // Always show the header at the very top.
+      if (currentScrollY <= 20) {
+        setHeaderVisible(true);
+        lastScrollY = currentScrollY;
+        return;
+      }
+
+      // Keep the header visible while the mobile menu is open.
+      if (mobileOpen) {
+        setHeaderVisible(true);
+        lastScrollY = currentScrollY;
+        return;
+      }
+
+      // Ignore tiny scroll movements.
+      if (Math.abs(currentScrollY - lastScrollY) < 8) {
+        return;
+      }
+
+      if (currentScrollY > lastScrollY) {
+        // Scrolling down → hide.
+        setHeaderVisible(false);
+      } else {
+        // Scrolling up → show.
+        setHeaderVisible(true);
+      }
+
+      lastScrollY = currentScrollY;
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [mobileOpen]);
 
   const closeMobileMenu = () => {
     setMobileOpen(false);
@@ -51,6 +95,8 @@ export function SiteHeader({ className }: { className?: string }) {
           "h-[76px]",
           "border-b border-white/[0.08]",
           "bg-[#0B1120]/90 backdrop-blur-xl",
+          "transition-transform duration-300 ease-out",
+          headerVisible ? "translate-y-0" : "-translate-y-full",
           className,
         )}
       >

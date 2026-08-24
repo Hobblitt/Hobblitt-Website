@@ -2,84 +2,67 @@ export type ProjectCategory = "BUILD" | "AUTOMATE" | "GROW";
 
 export type Project = {
   slug: string;
-  title: string;
+  number: string;
   category: ProjectCategory;
   type: string;
+  title: string;
   description: string;
-  image: string;
+  services: string[];
+  status: string;
+  year: string;
   featured?: boolean;
-  capabilities: string[];
 };
 
-export const projects: Project[] = [
+export const featuredProjects: Project[] = [
   {
-    slug: "digital-product",
-    title: "Digital Product",
+    slug: "digital-platform",
+    number: "01",
     category: "BUILD",
     type: "DIGITAL PRODUCT",
+    title: "A digital platform built around the people using it.",
     description:
-      "A digital product designed to turn a complex business idea into a clear, useful experience.",
-    image: "/projects/digital-product.jpg",
+      "A scalable digital experience designed to turn a complex idea into something simple, useful, and ready to grow.",
+    services: ["Strategy", "UX/UI", "Web Development"],
+    status: "LIVE",
+    year: "2026",
     featured: true,
-    capabilities: ["Product", "Web Development", "UI / UX"],
   },
-
   {
-    slug: "workflow-system",
-    title: "Workflow System",
+    slug: "ai-code-review",
+    number: "02",
     category: "AUTOMATE",
-    type: "BUSINESS AUTOMATION",
+    type: "AI SYSTEM",
+    title: "Turning code review into an intelligent workflow.",
     description:
-      "A connected system designed to reduce repetitive work and help a team move faster.",
-    image: "/projects/workflow-system.jpg",
-    featured: true,
-    capabilities: ["Automation", "AI", "Internal Tools"],
+      "An AI-powered system designed to help engineering teams review code faster and catch problems earlier.",
+    services: ["AI", "Automation", "Developer Tools"],
+    status: "BUILDING",
+    year: "2026",
   },
-
   {
-    slug: "brand-experience",
-    title: "Brand Experience",
-    category: "GROW",
-    type: "DIGITAL EXPERIENCE",
-    description:
-      "A digital presence built to give a growing business a stronger identity and clearer direction.",
-    image: "/projects/brand-experience.jpg",
-    featured: true,
-    capabilities: ["Branding", "Web Design", "Content"],
-  },
-
-  {
-    slug: "operations-dashboard",
-    title: "Operations Dashboard",
-    category: "AUTOMATE",
-    type: "INTERNAL TOOL",
-    description:
-      "A centralized dashboard bringing important business operations into one place.",
-    image: "/projects/operations-dashboard.jpg",
-    capabilities: ["Internal Tools", "Automation", "Product"],
-  },
-
-  {
-    slug: "commerce-platform",
-    title: "Commerce Platform",
+    slug: "learning-platform",
+    number: "03",
     category: "BUILD",
-    type: "WEB APPLICATION",
+    type: "EDTECH PLATFORM",
+    title: "Making interactive learning feel like an experience.",
     description:
-      "A scalable commerce experience connecting customers, products, and business operations.",
-    image: "/projects/commerce-platform.jpg",
-    capabilities: ["Web Development", "E-commerce", "UI / UX"],
+      "A learning platform combining interactive stories, structured content, and technology into one digital experience.",
+    services: ["Product", "Web", "Backend"],
+    status: "BUILDING",
+    year: "2026",
   },
-
   {
-    slug: "growth-campaign",
-    title: "Growth Campaign",
+    slug: "growth-system",
+    number: "04",
     category: "GROW",
-    type: "DIGITAL CAMPAIGN",
+    type: "BRAND SYSTEM",
+    title: "Turning a growing business into a recognizable brand.",
     description:
-      "A digital campaign designed to turn attention into meaningful business momentum.",
-    image: "/projects/growth-campaign.jpg",
-    capabilities: ["Content", "Social", "SEO"],
+      "A connected brand and digital presence designed to make the business easier to understand, discover, and remember.",
+    services: ["Branding", "Content", "SEO"],
+    status: "CONCEPT",
+    year: "2026",
   },
 ];
 
-export const featuredProjects = projects.filter((project) => project.featured);
+export const allProjects = featuredProjects;
