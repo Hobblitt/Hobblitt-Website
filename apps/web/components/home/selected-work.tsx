@@ -67,7 +67,7 @@ export function SelectedWork() {
         <div className="grid gap-10 lg:grid-cols-[0.7fr_1.3fr] lg:gap-24">
           <div>
             <span className="type-caption text-[9px] text-[#22B8F0]">
-              06 / SELECTED WORK
+              07 / SELECTED WORK
             </span>
           </div>
 

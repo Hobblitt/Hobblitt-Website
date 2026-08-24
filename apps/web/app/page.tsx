@@ -6,7 +6,7 @@ import { Capabilities } from "@/components/home/capabilites";
 import { Community } from "@/components/home/community";
 import { Hero, type CapabilityKey } from "@/components/home/hero";
 import { HowWeWork } from "@/components/home/how-we-work";
-import { NextUp } from "@/components/home/next-up";
+import { ProblemAssembly } from "@/components/home/problem-assembly";
 import { SelectedWork } from "@/components/home/selected-work";
 import { SummonHobblitt } from "@/components/home/summon-hobblitt";
 import { VideoExplainer } from "@/components/home/video-explainer";
@@ -32,11 +32,11 @@ export default function FrontPage() {
         activeCapability={activeCapability}
         onSelectCapability={setActiveCapability}
       />
+      <ProblemAssembly />
       <HowWeWork />
       <SelectedWork />
       <Community />
       <SummonHobblitt />
-      <NextUp />
     </div>
   );
 }

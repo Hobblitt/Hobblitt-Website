@@ -37,7 +37,7 @@ export function HowWeWork() {
         <div className="grid gap-16 md:grid-cols-[0.32fr_0.68fr]">
           <div>
             <p className="type-caption text-[9px] text-[#22B8F0]">
-              05 / HOW WE WORK
+              06 / HOW WE WORK
             </p>
           </div>
 
