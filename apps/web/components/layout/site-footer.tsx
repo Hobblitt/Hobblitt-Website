@@ -5,19 +5,19 @@ import { BrandLogo } from "@/components/brand/brand-logo";
 const footerNavigation = [
   {
     label: "ABOUT",
-    href: "#about",
+    href: "/about",
   },
   {
     label: "CAPABILITIES",
-    href: "#capabilities",
+    href: "/capabilities",
   },
   {
-    label: "WORK",
-    href: "#work",
+    label: "PRICING",
+    href: "/pricing",
   },
   {
     label: "APPROACH",
-    href: "#approach",
+    href: "/approach",
   },
 ];
 

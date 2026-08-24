@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
 
 const principles = [
   {
@@ -28,138 +27,142 @@ const principles = [
   },
 ];
 
-const whoWeWorkWith = ["STARTUPS", "BRANDS", "BUSINESSES", "FOUNDERS", "TEAMS"];
+const capabilities = [
+  {
+    number: "01",
+    title: "PRODUCT",
+    description: "Turning ideas into useful digital products.",
+  },
+  {
+    number: "02",
+    title: "ENGINEERING",
+    description: "Building reliable software and technical systems.",
+  },
+  {
+    number: "03",
+    title: "AUTOMATION",
+    description: "Removing repetitive work with intelligent systems.",
+  },
+  {
+    number: "04",
+    title: "GROWTH",
+    description: "Helping businesses turn technology into momentum.",
+  },
+];
+
+const clients = ["STARTUPS", "BRANDS", "BUSINESSES", "FOUNDERS", "TEAMS"];
 
 export default function AboutPage() {
   return (
     <main className="bg-[#0B1120] text-[#F8FAFC]">
       {/* =========================================================
           HERO
-      ========================================================= */}
+          ========================================================= */}
 
-      <section className="relative overflow-hidden px-margin pb-28 pt-20 md:pb-40 md:pt-28">
-        <div className="pointer-events-none absolute inset-0 hero-grid opacity-30" />
+      <section className="relative overflow-hidden border-b border-white/10">
+        <div className="hero-grid absolute inset-0 opacity-40" />
 
-        <div className="relative mx-auto max-w-screen-2xl">
-          <div className="grid gap-14 lg:grid-cols-[0.32fr_0.68fr]">
-            {/* Label */}
+        <div className="relative mx-auto grid min-h-[calc(100vh-72px)] max-w-[1440px] grid-cols-1 gap-12 px-6 pb-20 pt-28 md:grid-cols-[240px_1fr] md:gap-12 md:px-10 md:pb-24 md:pt-36 lg:px-16">
+          <div>
+            <p className="section-label text-[#22B8F0]">01 / ABOUT HOBBLITT</p>
+          </div>
 
-            <div>
-              <span className="font-mono text-[9px] font-bold tracking-[0.18em] text-[#22B8F0]">
-                01 / ABOUT HOBBLITT
-              </span>
-            </div>
+          <div className="max-w-[960px]">
+            <p className="mb-7 font-mono text-[9px] font-bold tracking-[0.2em] text-[#64748B]">
+              THE PEOPLE YOU CALL WHEN THINGS GET STUCK.
+            </p>
 
-            {/* Main */}
+            <h1 className="max-w-[950px] font-display text-[clamp(3.75rem,7.5vw,8rem)] font-semibold leading-[0.88] tracking-[-0.055em]">
+              We&apos;re here
+              <br />
+              to move things
+              <br />
+              <span className="text-[#22B8F0]">forward.</span>
+            </h1>
 
-            <div>
-              <p className="font-mono text-[9px] font-bold tracking-[0.18em] text-[#64748B]">
-                THE PEOPLE YOU CALL WHEN THINGS GET STUCK.
-              </p>
-
-              <h1 className="mt-5 max-w-6xl font-display text-5xl font-bold leading-[0.9] tracking-[-0.055em] md:text-7xl lg:text-[7.5rem]">
-                We&apos;re here
-                <br />
-                to move things
-                <br />
-                <span className="text-[#22B8F0]">forward.</span>
-              </h1>
-
-              <p className="mt-10 max-w-2xl text-base leading-7 text-[#94A3B8] md:text-lg md:leading-8">
-                Hobblitt is a technology and creative partner for businesses
-                building what comes next. We help teams build products, automate
-                operations, solve problems, and find new ways to grow.
-              </p>
-            </div>
+            <p className="mt-10 max-w-[700px] font-body text-lg leading-8 text-[#94A3B8] md:mt-12 md:text-xl">
+              Hobblitt is a technology and creative partner for businesses
+              building what comes next. We help teams build products, automate
+              operations, solve problems, and find new ways to grow.
+            </p>
           </div>
         </div>
       </section>
 
       {/* =========================================================
-          WHAT HOBBLITT IS
-      ========================================================= */}
+          WHAT WE ARE
+          ========================================================= */}
 
-      <section
-        id="about"
-        className="border-t border-white/10 bg-[#101A2E] px-margin py-24 md:py-32"
-      >
-        <div className="mx-auto max-w-screen-2xl">
-          <div className="grid gap-14 lg:grid-cols-[0.32fr_0.68fr]">
-            <div>
-              <span className="font-mono text-[9px] font-bold tracking-[0.18em] text-[#22B8F0]">
-                02 / WHAT WE ARE
-              </span>
+      <section className="border-b border-white/10 bg-[#111C33]">
+        <div className="mx-auto grid max-w-[1440px] grid-cols-1 gap-12 px-6 py-20 md:grid-cols-[240px_1fr] md:gap-12 md:px-10 md:py-28 lg:px-16">
+          <div>
+            <p className="section-label text-[#22B8F0]">02 / WHAT WE ARE</p>
+          </div>
+
+          <div className="max-w-[1080px]">
+            <h2 className="max-w-[1000px] font-display text-[clamp(3rem,6vw,6.25rem)] font-semibold leading-[0.9] tracking-[-0.055em]">
+              Not just another agency.
+              <br />
+              <span className="text-[#22B8F0]">Not just another dev shop.</span>
+            </h2>
+
+            <div className="mt-14 grid gap-8 md:grid-cols-2 md:gap-12">
+              <p className="max-w-[500px] font-body text-lg leading-8 text-[#94A3B8]">
+                Sometimes you need someone to build the thing. Sometimes you
+                need someone to figure out what the thing should be first.
+              </p>
+
+              <p className="max-w-[500px] font-body text-lg leading-8 text-[#94A3B8]">
+                Hobblitt exists somewhere in between strategy, technology,
+                creativity, and execution — bringing the right pieces together
+                when a business needs to move.
+              </p>
             </div>
 
-            <div>
-              <h2 className="max-w-5xl font-display text-4xl font-bold leading-[0.95] tracking-[-0.045em] md:text-6xl lg:text-7xl">
-                Not just another agency.
+            <div className="mt-12 border-l-2 border-[#22B8F0] pl-5 md:mt-14 md:pl-6">
+              <p className="font-display text-2xl font-semibold tracking-[-0.03em] md:text-3xl">
+                You don&apos;t have to arrive with the answer.
                 <br />
                 <span className="text-[#22B8F0]">
-                  Not just another dev shop.
+                  Just bring us the problem.
                 </span>
-              </h2>
-
-              <div className="mt-10 grid gap-8 md:grid-cols-2">
-                <p className="text-base leading-7 text-[#94A3B8] md:text-lg">
-                  Sometimes you need someone to build the thing. Sometimes you
-                  need someone to figure out what the thing should be first.
-                </p>
-
-                <p className="text-base leading-7 text-[#94A3B8] md:text-lg">
-                  Hobblitt exists somewhere in between strategy, technology,
-                  creativity, and execution — bringing the right pieces together
-                  when a business needs to move.
-                </p>
-              </div>
-
-              <div className="mt-12 border-l-2 border-[#22B8F0] pl-6">
-                <p className="font-display text-2xl font-bold leading-tight tracking-[-0.025em] md:text-3xl">
-                  You don&apos;t have to arrive with the answer.
-                  <br />
-                  <span className="text-[#22B8F0]">
-                    Just bring us the problem.
-                  </span>
-                </p>
-              </div>
+              </p>
             </div>
           </div>
         </div>
       </section>
 
       {/* =========================================================
-          PARTNERS
-      ========================================================= */}
+          RELATIONSHIP
+          ========================================================= */}
 
-      <section className="border-t border-white/10 bg-[#0B1120] px-margin py-24 md:py-32">
-        <div className="mx-auto max-w-screen-2xl">
-          <div className="grid gap-14 lg:grid-cols-[0.32fr_0.68fr]">
-            <div>
-              <span className="font-mono text-[9px] font-bold tracking-[0.18em] text-[#22B8F0]">
-                03 / THE RELATIONSHIP
-              </span>
-            </div>
+      <section className="border-b border-white/10">
+        <div className="mx-auto grid max-w-[1440px] grid-cols-1 gap-12 px-6 py-20 md:grid-cols-[240px_1fr] md:gap-12 md:px-10 md:py-28 lg:px-16">
+          <div>
+            <p className="section-label text-[#22B8F0]">
+              03 / THE RELATIONSHIP
+            </p>
+          </div>
 
-            <div>
-              <p className="font-mono text-[9px] font-bold tracking-[0.18em] text-[#64748B]">
-                PARTNERS, NOT VENDORS.
-              </p>
+          <div className="max-w-[1050px]">
+            <p className="mb-7 font-mono text-[9px] font-bold tracking-[0.2em] text-[#64748B]">
+              PARTNERS, NOT VENDORS.
+            </p>
 
-              <h2 className="mt-5 max-w-5xl font-display text-5xl font-bold leading-[0.92] tracking-[-0.05em] md:text-7xl lg:text-8xl">
-                When your back is
-                <br />
-                against the wall,
-                <br />
-                <span className="text-[#22B8F0]">call Hobblitt.</span>
-              </h2>
+            <h2 className="max-w-[1000px] font-display text-[clamp(3.25rem,6.5vw,7rem)] font-semibold leading-[0.88] tracking-[-0.055em]">
+              When your back is against the wall,
+              <br />
+              <span className="text-[#22B8F0]">call Hobblitt.</span>
+            </h2>
 
-              <p className="mt-10 max-w-2xl text-base leading-7 text-[#94A3B8] md:text-lg md:leading-8">
+            <div className="mt-10 max-w-[800px] space-y-5 font-body text-lg leading-8 text-[#94A3B8] md:mt-12">
+              <p>
                 We want to be the team you can call when something important is
                 stuck. A product needs building. A process needs automating. A
                 campaign needs direction. A business needs to grow.
               </p>
 
-              <p className="mt-6 max-w-2xl text-base leading-7 text-[#94A3B8] md:text-lg md:leading-8">
+              <p>
                 One tap is enough. Tell us what is happening. We listen first,
                 then bring the right people and capabilities together.
               </p>
@@ -169,133 +172,169 @@ export default function AboutPage() {
       </section>
 
       {/* =========================================================
+          WHAT WE BRING
+          ========================================================= */}
+
+      <section className="bg-[#F1F5F9] text-[#0B1120]">
+        <div className="mx-auto grid max-w-[1440px] grid-cols-1 gap-12 px-6 py-20 md:grid-cols-[240px_1fr] md:gap-12 md:px-10 md:py-28 lg:px-16">
+          <div>
+            <p className="section-label text-[#22B8F0]">04 / WHAT WE BRING</p>
+          </div>
+
+          <div className="max-w-[1050px]">
+            <h2 className="max-w-[850px] font-display text-[clamp(3.5rem,6.5vw,7rem)] font-semibold leading-[0.88] tracking-[-0.055em]">
+              One problem.
+              <br />
+              <span className="text-[#22B8F0]">Many capabilities.</span>
+            </h2>
+
+            <div className="mt-14 border-t border-[#CBD5E1]">
+              {capabilities.map((item) => (
+                <div
+                  key={item.number}
+                  className="group grid gap-5 border-b border-[#CBD5E1] py-7 transition-colors duration-300 hover:bg-white/50 md:grid-cols-[64px_260px_1fr] md:gap-6 md:py-8"
+                >
+                  <span className="font-mono text-[9px] font-bold tracking-[0.16em] text-[#22B8F0]">
+                    {item.number}
+                  </span>
+
+                  <h3 className="font-display text-xl font-semibold tracking-[-0.03em] transition-transform duration-300 group-hover:translate-x-1">
+                    {item.title}
+                  </h3>
+
+                  <p className="max-w-[520px] font-body text-base leading-7 text-[#64748B]">
+                    {item.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            <Link
+              href="/capabilities"
+              className="mt-8 inline-flex border border-[#0B1120]/20 px-6 py-4 font-mono text-[9px] font-bold tracking-[0.18em] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#0B1120] hover:text-[#F8FAFC]"
+            >
+              EXPLORE CAPABILITIES&nbsp; ↗
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* =========================================================
           PRINCIPLES
-      ========================================================= */}
+          ========================================================= */}
 
-      <section className="border-t border-white/10 bg-[#F1F5F9] px-margin py-24 text-[#0B1120] md:py-32">
-        <div className="mx-auto max-w-screen-2xl">
-          <div className="grid gap-14 lg:grid-cols-[0.32fr_0.68fr]">
-            <div>
-              <span className="font-mono text-[9px] font-bold tracking-[0.18em] text-[#0891B2]">
-                04 / HOW WE THINK
-              </span>
-            </div>
+      <section className="border-t border-[#CBD5E1] bg-[#F1F5F9] text-[#0B1120]">
+        <div className="mx-auto grid max-w-[1440px] grid-cols-1 gap-12 px-6 pb-20 md:grid-cols-[240px_1fr] md:gap-12 md:px-10 md:pb-28 lg:px-16">
+          <div>
+            <p className="section-label text-[#22B8F0]">05 / HOW WE THINK</p>
+          </div>
 
-            <div>
-              <h2 className="max-w-5xl font-display text-5xl font-bold leading-[0.92] tracking-[-0.05em] md:text-7xl">
-                Four things
-                <br />
-                we believe.
-              </h2>
+          <div className="max-w-[1050px]">
+            <h2 className="max-w-[850px] font-display text-[clamp(3rem,5.8vw,6rem)] font-semibold leading-[0.9] tracking-[-0.055em]">
+              Four things
+              <br />
+              we believe.
+            </h2>
 
-              <div className="mt-14 border-t border-[#CBD5E1]">
-                {principles.map((principle) => (
-                  <article
-                    key={principle.number}
-                    className="grid gap-6 border-b border-[#CBD5E1] py-8 md:grid-cols-[80px_0.8fr_1.2fr] md:items-start"
-                  >
-                    <span className="font-mono text-[9px] font-bold tracking-[0.18em] text-[#0891B2]">
-                      {principle.number}
-                    </span>
+            <div className="mt-14 border-t border-[#CBD5E1]">
+              {principles.map((item) => (
+                <div
+                  key={item.number}
+                  className="group grid gap-5 border-b border-[#CBD5E1] py-8 transition-colors duration-300 hover:bg-white/50 md:grid-cols-[64px_300px_1fr] md:gap-6 md:py-9"
+                >
+                  <span className="font-mono text-[9px] font-bold tracking-[0.16em] text-[#22B8F0]">
+                    {item.number}
+                  </span>
 
-                    <h3 className="font-display text-xl font-bold tracking-[-0.025em] md:text-2xl">
-                      {principle.title}
-                    </h3>
+                  <h3 className="font-display text-xl font-semibold tracking-[-0.03em] transition-transform duration-300 group-hover:translate-x-1">
+                    {item.title}
+                  </h3>
 
-                    <p className="max-w-xl text-sm leading-6 text-[#64748B] md:text-base">
-                      {principle.description}
-                    </p>
-                  </article>
-                ))}
-              </div>
+                  <p className="max-w-[560px] font-body text-base leading-7 text-[#64748B]">
+                    {item.description}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
       {/* =========================================================
-          WHO WE WORK WITH
-      ========================================================= */}
+          WHO WE HELP
+          ========================================================= */}
 
-      <section className="border-t border-white/10 bg-[#0B1120] px-margin py-24 md:py-32">
-        <div className="mx-auto max-w-screen-2xl">
-          <div className="grid gap-14 lg:grid-cols-[0.32fr_0.68fr]">
-            <div>
-              <span className="font-mono text-[9px] font-bold tracking-[0.18em] text-[#22B8F0]">
-                05 / WHO WE HELP
-              </span>
-            </div>
+      <section className="border-t border-white/10 bg-[#0B1120]">
+        <div className="mx-auto grid max-w-[1440px] grid-cols-1 gap-12 px-6 py-20 md:grid-cols-[240px_1fr] md:gap-12 md:px-10 md:py-28 lg:px-16">
+          <div>
+            <p className="section-label text-[#22B8F0]">06 / WHO WE HELP</p>
+          </div>
 
-            <div>
-              <h2 className="max-w-5xl font-display text-4xl font-bold leading-[0.95] tracking-[-0.045em] md:text-6xl">
-                If you&apos;re trying to
-                <br />
-                <span className="text-[#22B8F0]">build something better,</span>
-                <br />
-                we should talk.
-              </h2>
+          <div className="max-w-[1050px]">
+            <h2 className="max-w-[900px] font-display text-[clamp(3rem,5.8vw,6rem)] font-semibold leading-[0.9] tracking-[-0.055em]">
+              If you&apos;re trying to
+              <br />
+              <span className="text-[#22B8F0]">build something better,</span>
+              <br />
+              we should talk.
+            </h2>
 
-              <div className="mt-14 grid border-y border-white/10 sm:grid-cols-2 lg:grid-cols-5">
-                {whoWeWorkWith.map((type, index) => (
-                  <div
-                    key={type}
-                    className="flex items-center gap-4 border-b border-white/10 px-5 py-6 last:border-b-0 sm:nth-[2n]:border-b-0 lg:border-b-0 lg:border-r lg:last:border-r-0"
-                  >
-                    <span className="font-mono text-[8px] text-[#475569]">
-                      0{index + 1}
-                    </span>
+            <p className="mt-9 max-w-[760px] font-body text-lg leading-8 text-[#94A3B8]">
+              We work with people building what comes next — from early ideas
+              and growing businesses to teams ready to rethink how they work.
+            </p>
 
-                    <span className="font-mono text-[9px] font-bold tracking-[0.14em]">
-                      {type}
-                    </span>
+            <div className="mt-10 grid border-y border-white/10 sm:grid-cols-5">
+              {clients.map((client, index) => (
+                <div
+                  key={client}
+                  className="group border-b border-white/10 px-4 py-5 transition-colors duration-300 hover:bg-white/[0.03] last:border-b-0 sm:border-b-0 sm:border-r sm:last:border-r-0"
+                >
+                  <div className="mb-2 font-mono text-[8px] tracking-[0.16em] text-[#475569]">
+                    0{index + 1}
                   </div>
-                ))}
-              </div>
+
+                  <div className="font-mono text-[9px] font-bold tracking-[0.16em] text-[#F8FAFC] transition-colors duration-300 group-hover:text-[#22B8F0]">
+                    {client}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
       {/* =========================================================
-          CTA
-      ========================================================= */}
+          FINAL CTA
+          ========================================================= */}
 
-      <section className="border-t border-[#07111D]/20 bg-[#22B8F0] px-margin py-24 text-[#07111D] md:py-32">
-        <div className="mx-auto max-w-screen-2xl">
-          <div className="grid gap-10 lg:grid-cols-[0.32fr_0.68fr]">
-            <div>
-              <span className="font-mono text-[9px] font-bold tracking-[0.18em]">
-                06 / NEXT MOVE
-              </span>
-            </div>
+      <section className="bg-[#22B8F0] text-[#0B1120]">
+        <div className="mx-auto grid min-h-[480px] max-w-[1440px] grid-cols-1 gap-12 px-6 py-20 md:grid-cols-[240px_1fr] md:gap-12 md:px-10 md:py-28 lg:px-16">
+          <div>
+            <p className="section-label text-[#0B1120]">07 / NEXT MOVE</p>
+          </div>
 
-            <div>
-              <h2 className="max-w-5xl font-display text-5xl font-bold leading-[0.88] tracking-[-0.055em] md:text-7xl lg:text-8xl">
-                Got something
-                <br />
-                worth building?
-              </h2>
+          <div>
+            <h2 className="max-w-[900px] font-display text-[clamp(3.75rem,7.5vw,8rem)] font-semibold leading-[0.86] tracking-[-0.06em]">
+              Got something
+              <br />
+              worth building?
+            </h2>
 
-              <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-                <Link
-                  href="/summon"
-                  className="group inline-flex h-14 items-center justify-between gap-10 bg-[#07111D] px-6 font-mono text-[9px] font-bold tracking-[0.16em] text-[#22B8F0] transition-transform duration-300 hover:-translate-y-1"
-                >
-                  SUMMON HOBBLITT
-                  <ArrowUpRight
-                    className="size-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                    aria-hidden="true"
-                  />
-                </Link>
+            <div className="mt-10 flex flex-wrap gap-3 md:mt-12">
+              <Link
+                href="/summon"
+                className="bg-[#0B1120] px-7 py-5 font-mono text-[9px] font-bold tracking-[0.18em] text-[#22B8F0] transition-transform duration-300 hover:-translate-y-1"
+              >
+                SUMMON HOBBLITT&nbsp; ↗
+              </Link>
 
-                <Link
-                  href="/capabilities"
-                  className="inline-flex h-14 items-center justify-between gap-10 border border-[#07111D]/30 px-6 font-mono text-[9px] font-bold tracking-[0.16em] transition-all duration-300 hover:border-[#07111D] hover:bg-[#07111D]/5"
-                >
-                  SEE CAPABILITIES
-                  <ArrowUpRight className="size-4" aria-hidden="true" />
-                </Link>
-              </div>
+              <Link
+                href="/capabilities"
+                className="border border-[#0B1120]/30 px-7 py-5 font-mono text-[9px] font-bold tracking-[0.18em] transition-all duration-300 hover:-translate-y-1 hover:bg-[#0B1120] hover:text-[#22B8F0]"
+              >
+                SEE CAPABILITIES&nbsp; ↗
+              </Link>
             </div>
           </div>
         </div>
