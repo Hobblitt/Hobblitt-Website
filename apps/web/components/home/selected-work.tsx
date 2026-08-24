@@ -1,346 +1,235 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 
-type Project = {
+import { featuredProjects } from "@/lib/projects";
+
+function ProjectVisual({
+  category,
+  number,
+}: {
+  category: string;
   number: string;
-  title: string;
-  category: "BUILD" | "AUTOMATE" | "GROW";
-  type: string;
-  description: string;
-  image?: string;
-  href?: string;
-  featured?: boolean;
-};
+}) {
+  return (
+    <div className="work-project-visual relative min-h-[260px] overflow-hidden md:min-h-[320px]">
+      {/* Category stamp */}
+      <div className="absolute left-5 top-5 z-10 border border-[#22B8F0]/50 px-4 py-3">
+        <span className="font-stamp text-[8px] font-bold tracking-[0.2em] text-[#22B8F0]">
+          {category}
+        </span>
+      </div>
 
-const projects: Project[] = [
-  {
-    number: "01",
-    title: "Digital Product",
-    category: "BUILD",
-    type: "WEB APPLICATION",
-    description:
-      "A focused digital product designed to turn a complex workflow into a simple experience.",
-    href: "#",
-    featured: true,
-  },
-  {
-    number: "02",
-    title: "AI Workflow System",
-    category: "AUTOMATE",
-    type: "AI / AUTOMATION",
-    description:
-      "An intelligent workflow that removes repetitive work and helps teams move faster.",
-    href: "#",
-  },
-  {
-    number: "03",
-    title: "Growth Engine",
-    category: "GROW",
-    type: "DIGITAL EXPERIENCE",
-    description:
-      "A digital experience built to strengthen presence, engagement, and momentum.",
-    href: "#",
-  },
-];
+      {/* Signal system */}
+      <div className="absolute left-1/2 top-1/2 h-[62%] w-[42%] -translate-x-1/2 -translate-y-1/2">
+        <div className="work-signal-ring absolute inset-0 rounded-full border border-[#22B8F0]/20" />
 
-const categoryLabels = {
-  BUILD: "BUILD",
-  AUTOMATE: "AUTOMATE",
-  GROW: "GROW",
-};
+        <div className="work-signal-ring work-signal-ring-delay-1 absolute inset-[12%] rounded-full border border-[#22B8F0]/25" />
+
+        <div className="work-signal-ring work-signal-ring-delay-2 absolute inset-[25%] rounded-full border border-[#22B8F0]/30" />
+
+        <div className="absolute left-1/2 top-1/2 h-[58%] w-[58%] -translate-x-1/2 -translate-y-1/2 rotate-45 border border-[#22B8F0]/40" />
+
+        <div className="absolute left-1/2 top-0 h-full w-px -translate-x-1/2 bg-[#22B8F0]/20" />
+
+        <div className="absolute left-0 top-1/2 h-px w-full -translate-y-1/2 bg-[#22B8F0]/20" />
+
+        <div className="absolute right-[3%] top-1/2 h-3 w-3 -translate-y-1/2 rounded-full bg-[#22B8F0] shadow-[0_0_20px_rgba(34,184,240,0.8)]" />
+      </div>
+
+      {/* Project index */}
+      <span className="absolute bottom-5 left-5 font-stamp text-[8px] tracking-[0.22em] text-[#64748B]">
+        HOBBLITT / {number}
+      </span>
+
+      {/* Decorative corner */}
+      <div className="absolute bottom-5 right-5 h-10 w-10 border border-white/[0.08]" />
+    </div>
+  );
+}
 
 export function SelectedWork() {
+  const projects = featuredProjects.slice(0, 2);
+
   return (
     <section
       id="work"
-      className="border-t border-slate-300 bg-[#F8FAFC] px-margin py-28 text-[#0B1120] md:py-36"
+      className="border-t border-[#0B1120]/10 bg-[#F1F4F7] px-margin py-28 text-[#0B1120] md:py-36"
     >
       <div className="mx-auto max-w-screen-2xl">
-        {/* =====================================================
-            HEADER
-        ===================================================== */}
-
+        {/* Header */}
         <div className="grid gap-10 lg:grid-cols-[0.7fr_1.3fr] lg:gap-24">
           <div>
-            <span className="font-mono text-[9px] font-bold tracking-[0.18em] text-[#22B8F0]">
+            <span className="section-label text-[#22B8F0]">
               05 / SELECTED WORK
             </span>
           </div>
 
           <div>
-            <h2 className="max-w-5xl font-[var(--font-space-grotesk)] text-5xl font-bold leading-[0.92] tracking-[-0.05em] md:text-7xl lg:text-8xl">
-              Things we&apos;ve helped
+            <span className="font-stamp text-[8px] font-bold tracking-[0.24em] text-[#94A3B8]">
+              THINGS WE&apos;VE BUILT
+            </span>
+
+            <h2 className="mt-6 max-w-6xl font-display text-5xl font-bold leading-[0.9] tracking-[-0.045em] md:text-7xl lg:text-[88px]">
+              Work that
               <br />
-              <span className="text-[#22B8F0]">move forward.</span>
+              <span className="text-[#22B8F0]">moves things forward.</span>
             </h2>
 
-            <p className="mt-8 max-w-2xl text-base leading-7 text-[#64748B] md:text-lg">
-              Websites. Products. Systems. Campaigns. Brands. Whatever the
-              problem needed, we brought the right capabilities together to move
-              it forward.
+            <p className="mt-8 max-w-2xl font-body text-base leading-7 text-[#64748B] md:text-lg">
+              Websites. Products. AI systems. Brand experiences. A selection of
+              things we&apos;ve built, shaped, and helped move forward.
             </p>
           </div>
         </div>
 
-        {/* =====================================================
-            CATEGORY FILTER
-        ===================================================== */}
+        {/* Capability strip */}
+        <div className="mt-16 grid border-y border-[#0B1120]/10 md:grid-cols-3">
+          <div className="border-b border-[#0B1120]/10 px-5 py-6 md:border-b-0 md:border-r">
+            <div className="flex items-center gap-3">
+              <span className="font-stamp text-[8px] text-[#94A3B8]">01</span>
 
-        <div className="mt-16 flex flex-wrap gap-2 border-y border-[#0B1120]/10 py-4">
-          <span className="mr-3 font-mono text-[9px] font-bold tracking-[0.16em] text-[#94A3B8]">
-            FILTER
-          </span>
+              <span className="font-stamp text-[9px] font-bold tracking-[0.18em]">
+                BUILD
+              </span>
+            </div>
 
-          {Object.keys(categoryLabels).map((category) => (
-            <span
-              key={category}
-              className="
-                border
-                border-[#0B1120]/10
-                px-3
-                py-2
-                font-mono
-                text-[8px]
-                font-bold
-                tracking-[0.14em]
-                text-[#64748B]
-              "
-            >
-              {categoryLabels[category as keyof typeof categoryLabels]}
-            </span>
-          ))}
+            <p className="mt-4 font-body text-sm text-[#64748B]">
+              Digital products, platforms, and experiences.
+            </p>
+          </div>
+
+          <div className="border-b border-[#0B1120]/10 px-5 py-6 md:border-b-0 md:border-r">
+            <div className="flex items-center gap-3">
+              <span className="font-stamp text-[8px] text-[#94A3B8]">02</span>
+
+              <span className="font-stamp text-[9px] font-bold tracking-[0.18em]">
+                AUTOMATE
+              </span>
+            </div>
+
+            <p className="mt-4 font-body text-sm text-[#64748B]">
+              AI, systems, workflows, and intelligent operations.
+            </p>
+          </div>
+
+          <div className="px-5 py-6">
+            <div className="flex items-center gap-3">
+              <span className="font-stamp text-[8px] text-[#94A3B8]">03</span>
+
+              <span className="font-stamp text-[9px] font-bold tracking-[0.18em]">
+                GROW
+              </span>
+            </div>
+
+            <p className="mt-4 font-body text-sm text-[#64748B]">
+              Brands, content, visibility, and digital momentum.
+            </p>
+          </div>
         </div>
 
-        {/* =====================================================
-            FEATURED PROJECT
-        ===================================================== */}
-
-        {projects
-          .filter((project) => project.featured)
-          .map((project) => (
-            <Link
-              key={project.number}
-              href={project.href ?? "#"}
-              className="
-                group
-                mt-10
-                block
-                overflow-hidden
-                border
-                border-[#0B1120]/10
-                bg-white
-              "
+        {/* Featured projects */}
+        <div className="mt-16 grid border-l border-t border-[#0B1120]/10 md:grid-cols-2">
+          {projects.map((project) => (
+            <article
+              key={project.slug}
+              className="group border-b border-r border-[#0B1120]/10"
             >
-              <div className="grid lg:grid-cols-[1.4fr_0.6fr]">
-                {/* Image */}
-                <div className="relative aspect-[16/10] overflow-hidden bg-[#111827]">
-                  {project.image ? (
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      fill
-                      className="
-                        object-cover
-                        transition-transform
-                        duration-700
-                        group-hover:scale-[1.03]
-                      "
-                    />
-                  ) : (
-                    <ProjectPlaceholder />
-                  )}
+              <ProjectVisual
+                category={project.category}
+                number={project.number}
+              />
 
-                  <div className="absolute left-5 top-5 border border-white/20 bg-[#0B1120]/80 px-3 py-2 backdrop-blur-sm">
-                    <span className="font-mono text-[8px] font-bold tracking-[0.16em] text-[#22B8F0]">
-                      {project.category}
-                    </span>
-                  </div>
-                </div>
+              <div className="p-6 md:p-8 lg:p-9">
+                <div className="flex items-center justify-between">
+                  <span className="font-stamp text-[8px] tracking-[0.2em] text-[#94A3B8]">
+                    {project.year}
+                  </span>
 
-                {/* Information */}
-                <div className="flex min-h-[360px] flex-col justify-between p-8 md:p-10">
-                  <div>
-                    <div className="flex items-start justify-between">
-                      <span className="font-mono text-[9px] font-bold tracking-[0.16em] text-[#94A3B8]">
-                        {project.number}
-                      </span>
-
-                      <ArrowUpRight
-                        className="
-                          size-5
-                          text-[#94A3B8]
-                          transition-all
-                          duration-300
-                          group-hover:-translate-y-1
-                          group-hover:translate-x-1
-                          group-hover:text-[#22B8F0]
-                        "
-                      />
-                    </div>
-
-                    <p className="mt-14 font-mono text-[8px] font-bold tracking-[0.16em] text-[#22B8F0]">
-                      {project.type}
-                    </p>
-
-                    <h3 className="mt-4 font-[var(--font-space-grotesk)] text-4xl font-bold tracking-[-0.04em] md:text-5xl">
-                      {project.title}
-                    </h3>
-
-                    <p className="mt-5 max-w-md text-sm leading-6 text-[#64748B]">
-                      {project.description}
-                    </p>
-                  </div>
-
-                  <span className="mt-10 inline-flex items-center gap-3 font-mono text-[9px] font-bold tracking-[0.16em] text-[#0B1120]">
-                    VIEW PROJECT
-                    <span className="transition-transform duration-300 group-hover:translate-x-1">
-                      →
-                    </span>
+                  <span className="font-stamp text-[8px] font-bold tracking-[0.2em] text-[#22B8F0]">
+                    {project.status}
                   </span>
                 </div>
-              </div>
-            </Link>
-          ))}
 
-        {/* =====================================================
-            OTHER PROJECTS
-        ===================================================== */}
+                <span className="mt-10 block font-stamp text-[9px] font-bold tracking-[0.2em] text-[#22B8F0]">
+                  {project.type}
+                </span>
 
-        <div className="mt-4 grid gap-4 md:grid-cols-2">
-          {projects
-            .filter((project) => !project.featured)
-            .map((project) => (
-              <Link
-                key={project.number}
-                href={project.href ?? "#"}
-                className="
-                  group
-                  overflow-hidden
-                  border
-                  border-[#0B1120]/10
-                  bg-white
-                  transition-colors
-                  duration-300
-                  hover:border-[#22B8F0]/50
-                "
-              >
-                {/* Image */}
-                <div className="relative aspect-[16/9] overflow-hidden bg-[#111827]">
-                  {project.image ? (
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      fill
-                      className="
-                        object-cover
-                        transition-transform
-                        duration-700
-                        group-hover:scale-[1.03]
-                      "
-                    />
-                  ) : (
-                    <ProjectPlaceholder />
-                  )}
-                </div>
+                <h3 className="mt-5 max-w-xl font-display text-3xl font-semibold leading-[1.02] tracking-[-0.035em] md:text-4xl">
+                  {project.title}
+                </h3>
 
-                {/* Content */}
-                <div className="p-7">
-                  <div className="flex items-center justify-between">
-                    <span className="font-mono text-[9px] font-bold tracking-[0.16em] text-[#94A3B8]">
-                      {project.number}
-                    </span>
+                <p className="mt-6 max-w-2xl font-body text-sm leading-7 text-[#64748B] md:text-base">
+                  {project.description}
+                </p>
 
-                    <span className="font-mono text-[8px] font-bold tracking-[0.14em] text-[#22B8F0]">
-                      {project.category}
-                    </span>
+                <div className="mt-10 flex items-end justify-between gap-6">
+                  <div className="flex flex-wrap gap-2">
+                    {project.services.map((service) => (
+                      <span
+                        key={service}
+                        className="border border-[#0B1120]/10 px-3 py-2 font-stamp text-[8px] tracking-[0.1em] text-[#64748B]"
+                      >
+                        {service}
+                      </span>
+                    ))}
                   </div>
 
-                  <h3 className="mt-10 font-[var(--font-space-grotesk)] text-3xl font-bold tracking-[-0.035em]">
-                    {project.title}
-                  </h3>
-
-                  <p className="mt-3 text-sm leading-6 text-[#64748B]">
-                    {project.description}
-                  </p>
-
-                  <div className="mt-7 flex items-center gap-2 font-mono text-[8px] font-bold tracking-[0.16em] text-[#0B1120]">
-                    VIEW PROJECT
+                  <Link
+                    href={`/work/${project.slug}`}
+                    aria-label={`View ${project.title}`}
+                    className="
+                      flex
+                      size-10
+                      shrink-0
+                      items-center
+                      justify-center
+                      border
+                      border-[#0B1120]/10
+                      transition-all
+                      duration-200
+                      group-hover:border-[#22B8F0]
+                      group-hover:bg-[#22B8F0]
+                    "
+                  >
                     <ArrowUpRight
-                      className="
-                        size-3
-                        transition-transform
-                        duration-300
-                        group-hover:-translate-y-0.5
-                        group-hover:translate-x-0.5
-                      "
+                      className="size-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                      aria-hidden="true"
                     />
-                  </div>
+                  </Link>
                 </div>
-              </Link>
-            ))}
+              </div>
+            </article>
+          ))}
         </div>
 
-        {/* =====================================================
-            ARCHIVE CTA
-        ===================================================== */}
-
-        <div className="mt-12 flex justify-center md:justify-end">
+        {/* View all */}
+        <div className="mt-10 flex justify-end">
           <Link
             href="/work"
             className="
-              group
               inline-flex
               items-center
-              gap-3
+              gap-4
               border
-              border-[#0B1120]
+              border-[#0B1120]/15
               px-6
               py-4
-              font-mono
+              font-stamp
               text-[9px]
               font-bold
-              tracking-[0.16em]
+              tracking-[0.18em]
               transition-all
-              duration-300
+              duration-200
+              hover:border-[#22B8F0]
               hover:bg-[#0B1120]
-              hover:text-[#F8FAFC]
+              hover:text-white
             "
           >
             VIEW ALL WORK
-            <ArrowUpRight
-              className="
-                size-4
-                transition-transform
-                duration-300
-                group-hover:-translate-y-0.5
-                group-hover:translate-x-0.5
-              "
-            />
+            <ArrowUpRight className="size-4" aria-hidden="true" />
           </Link>
         </div>
       </div>
     </section>
-  );
-}
-
-/* =========================================================
-   PLACEHOLDER
-   ========================================================= */
-
-function ProjectPlaceholder() {
-  return (
-    <div className="absolute inset-0 flex items-center justify-center">
-      <div className="relative flex h-32 w-32 items-center justify-center">
-        <div className="absolute inset-0 rounded-full border border-[#22B8F0]/20" />
-        <div className="absolute inset-5 rounded-full border border-[#22B8F0]/30" />
-
-        <div className="h-3 w-3 rounded-full bg-[#22B8F0] shadow-[0_0_30px_8px_rgba(34,184,240,0.25)]" />
-      </div>
-
-      <span className="absolute bottom-5 left-5 font-mono text-[8px] tracking-[0.18em] text-[#64748B]">
-        PROJECT PREVIEW
-      </span>
-    </div>
   );
 }

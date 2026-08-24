@@ -7,8 +7,11 @@
 :root {
   --hobblitt-graphite: #0b1120;
   --hobblitt-blue: #22b8f0;
-  --hobblitt-off-white: #f8fafc;
+
+  --hobblitt-off-white: #f1f4f7;
+
   --hobblitt-slate: #94a3b8;
+  --hobblitt-body-slate: #64748b;
 }
 
 * {
@@ -69,62 +72,20 @@ a {
 }
 
 /* =========================================================
-   HOBBLITT TYPOGRAPHY
+   TYPOGRAPHY
    ========================================================= */
-
-/*
-  Space Grotesk
-  --------------------------------
-  Used for:
-  - Hero headlines
-  - Major section headlines
-  - Service titles
-  - Brand statements
-*/
 
 .font-display {
   font-family: var(--font-space-grotesk), sans-serif;
+  letter-spacing: -0.045em;
 }
-
-/*
-  DM Sans
-  --------------------------------
-  Used for:
-  - Body copy
-  - Supporting text
-  - Descriptions
-*/
 
 .font-body {
   font-family: var(--font-dm-sans), sans-serif;
 }
 
-/*
-  Space Mono
-  --------------------------------
-  Used for:
-  - Navigation
-  - Section numbers
-  - Labels
-  - Metadata
-  - Small system-style text
-*/
-
 .font-stamp {
   font-family: var(--font-space-mono), monospace;
-}
-
-/* =========================================================
-   TYPOGRAPHIC REFINEMENT
-   ========================================================= */
-
-/* Large brand / section headlines */
-.font-display {
-  letter-spacing: -0.045em;
-}
-
-/* System labels / navigation */
-.font-stamp {
   letter-spacing: 0.16em;
 }
 
@@ -200,6 +161,53 @@ nav .font-stamp {
 }
 
 /* =========================================================
+   SELECTED WORK — PROJECT VISUALS
+   ========================================================= */
+
+.work-project-visual {
+  background-color: #0b1120;
+
+  background-image:
+    linear-gradient(
+      to right,
+      rgba(148, 163, 184, 0.08) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(148, 163, 184, 0.08) 1px,
+      transparent 1px
+    );
+
+  background-size: 54px 54px;
+}
+
+.work-signal-ring {
+  animation: workSignalPulse 5s ease-in-out infinite;
+}
+
+.work-signal-ring-delay-1 {
+  animation-delay: 0.7s;
+}
+
+.work-signal-ring-delay-2 {
+  animation-delay: 1.4s;
+}
+
+@keyframes workSignalPulse {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(0.98);
+  }
+
+  50% {
+    opacity: 0.75;
+    transform: scale(1.02);
+  }
+}
+
+/* =========================================================
    LINKS / INTERACTION
    ========================================================= */
 
@@ -246,5 +254,9 @@ a {
   nav .font-stamp {
     font-size: 9px;
     letter-spacing: 0.12em;
+  }
+
+  .work-project-visual {
+    background-size: 42px 42px;
   }
 }
