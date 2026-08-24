@@ -170,6 +170,27 @@ a {
     transform 180ms ease;
 }
 
+
+/* =========================================================
+   SKELETON SHIMMER (video poster capture loading state)
+   ========================================================= */
+
+.skeleton-shimmer {
+  background: linear-gradient(
+    100deg,
+    rgba(148, 163, 184, 0.06) 30%,
+    rgba(148, 163, 184, 0.14) 50%,
+    rgba(148, 163, 184, 0.06) 70%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2.2s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
 /* =========================================================
    ACCESSIBILITY
    ========================================================= */

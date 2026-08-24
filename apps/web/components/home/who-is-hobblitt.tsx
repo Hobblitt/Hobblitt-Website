@@ -26,7 +26,7 @@ export function WhoIsHobblitt() {
         <div className="grid gap-16 lg:grid-cols-[0.8fr_1.2fr] lg:gap-24">
           <div>
             <span className="type-caption text-[9px] text-[#22B8F0]">
-              01 / WHO IS HOBBLITT
+              02 / WHO IS HOBBLITT
             </span>
           </div>
 

@@ -45,7 +45,7 @@ export const capabilitiesContent = {
         ],
       },
       {
-        number: "03",
+        number: "04",
         title: "AUTOMATION",
         description:
           "We find repetitive work, disconnected systems, and slow processes — then build smarter ways to handle them.",

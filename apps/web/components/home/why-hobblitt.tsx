@@ -5,7 +5,7 @@ export function WhyHobblitt() {
         <div className="grid gap-16 lg:grid-cols-[0.7fr_1.3fr] lg:gap-24">
           <div>
             <span className="type-caption text-[9px] text-[#22B8F0]">
-              02 / WHY HOBBLITT
+              03 / WHY HOBBLITT
             </span>
           </div>
 

@@ -15,7 +15,7 @@ export function SummonHobblitt() {
       <div className="relative mx-auto max-w-screen-2xl">
         <div className="grid gap-12 lg:grid-cols-[0.32fr_0.68fr]">
           <div>
-            <span className="type-caption text-[9px]">07 / SUMMON</span>
+            <span className="type-caption text-[9px]">08 / SUMMON</span>
           </div>
 
           <div>
