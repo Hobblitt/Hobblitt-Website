@@ -50,9 +50,7 @@ export function SiteFooter({ className }: { className?: string }) {
 
           {/* Navigation */}
           <nav aria-label="Footer navigation">
-            <p className="mb-5 font-mono text-[8px] font-bold tracking-[0.22em] text-[#22B8F0]">
-              EXPLORE
-            </p>
+
 
             <ul className="grid grid-cols-2 gap-x-12 gap-y-4">
               {footerNavigation.map((item) => (
