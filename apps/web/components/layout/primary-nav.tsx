@@ -2,41 +2,64 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+
 import { cn } from "@hobblitt/ui/lib/utils";
-import { primaryNav } from "@/lib/site-config";
 
-export function isActivePath(pathname: string, href: string) {
-  return href === "/" ? pathname === "/" : pathname.startsWith(href);
-}
+const navigation = [
+  {
+    label: "ABOUT",
+    href: "/about",
+  },
+  {
+    label: "CAPABILITIES",
+    href: "/capabilities",
+  },
+  {
+    label: "APPROACH",
+    href: "/approach",
+  },
+  {
+    label: "PRICING",
+    href: "/pricing",
+  },
+];
 
-/** Masthead section links, ruled top and bottom like a newspaper index. */
 export function PrimaryNav({ className }: { className?: string }) {
   const pathname = usePathname();
 
   return (
-    <ul className={cn("flex items-center justify-center gap-8", className)}>
-      {primaryNav.map((item) => {
-        const active = isActivePath(pathname, item.href);
+    <nav aria-label="Primary navigation">
+      <ul className={cn("flex items-center gap-8", className)}>
+        {navigation.map((item) => {
+          const isActive = pathname === item.href;
 
-        return (
-          <li key={item.href}>
-            <Link
-              href={item.href}
-              aria-current={active ? "page" : undefined}
-              className={cn(
-                "px-2 py-1 font-stamp text-stamp uppercase transition-colors",
-                "hover:bg-highlight hover:text-highlight-ink",
-                "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink",
-                active
-                  ? "text-ink underline decoration-4 underline-offset-4"
-                  : "text-ink-muted",
-              )}
-            >
-              {item.label}
-            </Link>
-          </li>
-        );
-      })}
-    </ul>
+          return (
+            <li key={item.href}>
+              <Link
+                href={item.href}
+                aria-current={isActive ? "page" : undefined}
+                className={cn(
+                  "group relative py-2 font-mono text-[9px] font-bold tracking-[0.18em] transition-colors duration-300",
+                  isActive
+                    ? "text-[#F8FAFC]"
+                    : "text-[#94A3B8] hover:text-[#F8FAFC]",
+                )}
+              >
+                {item.label}
+
+                <span
+                  className={cn(
+                    "absolute inset-x-0 bottom-0 h-px origin-left bg-[#22B8F0] transition-transform duration-300",
+                    isActive
+                      ? "scale-x-100"
+                      : "scale-x-0 group-hover:scale-x-100",
+                  )}
+                />
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
+    </nav>
   );
 }

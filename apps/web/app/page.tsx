@@ -1,29 +1,42 @@
-import { LeadStory } from "@/components/home/lead-story";
-import { NewsletterCard } from "@/components/home/newsletter-card";
-import { ServicesRoster } from "@/components/home/services-roster";
-import { SidebarLinks } from "@/components/home/sidebar-links";
-import { SidebarPromo } from "@/components/home/sidebar-promo";
-import { Reveal } from "@/components/ui/reveal";
+"use client";
+
+import { useState } from "react";
+
+import { Capabilities } from "@/components/home/capabilites";
+import { Community } from "@/components/home/community";
+import { Hero, type CapabilityKey } from "@/components/home/hero";
+import { HowWeWork } from "@/components/home/how-we-work";
+import { ProblemAssembly } from "@/components/home/problem-assembly";
+import { SelectedWork } from "@/components/home/selected-work";
+import { SummonHobblitt } from "@/components/home/summon-hobblitt";
+import { VideoExplainer } from "@/components/home/video-explainer";
+import { WhoIsHobblitt } from "@/components/home/who-is-hobblitt";
+import { WhyHobblitt } from "@/components/home/why-hobblitt";
 
 export default function FrontPage() {
-  return (
-    <div className="mx-auto flex w-full max-w-screen-2xl flex-col gap-gutter px-margin py-8 md:flex-row md:py-12">
-      {/* Lead column */}
-      <Reveal className="md:w-2/3 md:border-e-2 md:border-ink md:pe-gutter">
-        <article className="flex flex-col gap-8">
-          <LeadStory />
-          <ServicesRoster className="mt-8" />
-        </article>
-      </Reveal>
+  const [activeCapability, setActiveCapability] =
+    useState<CapabilityKey>("BUILD");
 
-      {/* Sidebar */}
-      <Reveal delay={0.15} className="md:w-1/3">
-        <aside className="flex flex-col gap-8 pt-10">
-          <NewsletterCard />
-          <SidebarPromo />
-          <SidebarLinks />
-        </aside>
-      </Reveal>
+  return (
+    <div className="bg-[#111827] text-[#F8FAFC]">
+      <Hero
+        activeCapability={activeCapability}
+        onSelectCapability={setActiveCapability}
+      />
+
+      <VideoExplainer src="/video/hobblitt-explainer.mp4" duration="4:12" />
+
+      <WhoIsHobblitt />
+      <WhyHobblitt />
+      <Capabilities
+        activeCapability={activeCapability}
+        onSelectCapability={setActiveCapability}
+      />
+      <ProblemAssembly />
+      <HowWeWork />
+      <SelectedWork />
+      <Community />
+      <SummonHobblitt />
     </div>
   );
 }
