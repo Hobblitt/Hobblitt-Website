@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { BrandLogo } from "@/components/brand/brand-logo";
+import { SocialIcons } from "@/components/shared/social-icons";
 
 const footerNavigation = [
   { label: "ABOUT", href: "/about" },
@@ -20,6 +21,7 @@ export function SiteFooter({ className }: { className?: string }) {
             <p className="type-body mt-5 max-w-xs text-sm leading-6 text-[#94A3B8]">
               Digital partners for businesses building what comes next.
             </p>
+            <SocialIcons className="mt-6" />
           </div>
 
           {/* Nav */}

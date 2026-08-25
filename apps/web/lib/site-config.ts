@@ -7,13 +7,16 @@ export type NavItem = {
 export const siteConfig = {
   name: "Hobblitt",
   legalName: "Hobblitt Media Group",
-
-  tagline: "Digital partners for businesses building what comes next.",
-
+  tagline: "A technology-first creative agency",
   description:
-    "Hobblitt is a technology and creative partner helping businesses build products, automate operations, solve problems, and grow.",
-
+    "Hobblitt is a technology-first creative agency helping businesses build, automate, and grow.",
   url: "https://hobblitt.com",
+
+  social: {
+    linkedin: "https://www.linkedin.com/company/hobblitt",
+    instagram: "https://www.instagram.com/hobblitt",
+    x: "https://x.com/hobblitt",
+  },
 } as const;
 
 export const primaryNav: NavItem[] = [
