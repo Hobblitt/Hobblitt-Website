@@ -47,12 +47,7 @@ export function Hero({ activeCapability, onSelectCapability }: HeroProps) {
             </span>
           </div>
 
-          {/* Display headline — League Spartan Black, hero only.
-              Floor is 2.75rem, not 4rem: "Hit a wall?" set in Black at 64px
-              measures wider than a 375px viewport's text column. */}
-          {/* From xl the signal dial takes ~520px of the row, so the headline
-              scales off the narrower copy column rather than the full page. */}
-          <h1 className="type-display max-w-[900px] text-[clamp(2.75rem,11vw,9rem)] uppercase xl:text-[clamp(3.5rem,5.5vw,7rem)]">
+          <h1 className="type-display max-w-[900px] text-[clamp(2.75rem,11vw,8rem)] uppercase xl:text-[clamp(3.5rem,5vw,6.5rem)]">
             <span className="block">Hit a wall?</span>
             <span className="mt-2 block text-[#22B8F0] sm:mt-3">Summon</span>
             <span className="block">Hobblitt.</span>
@@ -71,7 +66,9 @@ export function Hero({ activeCapability, onSelectCapability }: HeroProps) {
               className="group inline-flex h-14 items-center justify-center gap-4 bg-[#22B8F0] px-7 type-nav text-[10px] text-[#111827] transition-all duration-300 hover:bg-[#F8FAFC]"
             >
               SUMMON HOBBLITT
-              <span className="text-lg transition-transform duration-300 group-hover:translate-x-1">↗</span>
+              <span className="text-lg transition-transform duration-300 group-hover:translate-x-1">
+                ↗
+              </span>
             </a>
 
             <button
@@ -79,7 +76,9 @@ export function Hero({ activeCapability, onSelectCapability }: HeroProps) {
               className="group inline-flex h-14 items-center justify-center gap-4 border border-[#E2E8F0]/15 px-7 type-nav text-[10px] text-[#F8FAFC] transition-all duration-300 hover:border-[#E2E8F0]/40 hover:bg-[#E2E8F0]/[0.04]"
             >
               SEE WHAT WE BUILD
-              <span className="transition-transform duration-300 group-hover:translate-y-1">↓</span>
+              <span className="transition-transform duration-300 group-hover:translate-y-1">
+                ↓
+              </span>
             </button>
           </div>
         </div>
@@ -122,7 +121,9 @@ export function Hero({ activeCapability, onSelectCapability }: HeroProps) {
           >
             <span
               className={`type-nav text-[10px] transition-colors ${
-                activeCapability === "AUTOMATE" ? "text-white" : "text-[#64748B]"
+                activeCapability === "AUTOMATE"
+                  ? "text-white"
+                  : "text-[#64748B]"
               }`}
             >
               AUTOMATE

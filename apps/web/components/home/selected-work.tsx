@@ -122,11 +122,11 @@ export function SelectedWork() {
                     {project.type}
                   </p>
 
-                  <h3 className="type-h2 mt-4 text-2xl lg:text-3xl">
+                  <h3 className="type-h2 mt-4 text-2xl leading-[1.05] md:text-[1.8rem] lg:text-[2rem]">
                     {project.title}
                   </h3>
 
-                  <p className="type-body mt-5 text-sm leading-7 text-[#64748B]">
+                  <p className="type-body mt-5 max-w-[34rem] text-[15px] leading-7 text-[#64748B] md:text-base">
                     {project.description}
                   </p>
                 </div>
