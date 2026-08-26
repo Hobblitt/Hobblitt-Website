@@ -6,6 +6,13 @@
    Section 19 — Design System: Color & Typography (FINALIZED)
    ============================================================ */
 
+/* Exposes the fluid page gutter to Tailwind as the `margin` spacing key,
+   so `px-margin` / `pt-margin` resolve to var(--site-gutter). `inline`
+   substitutes the value directly, so the media-free clamp below is the
+   single source of truth for the site gutter. */
+@theme inline {
+  --spacing-margin: var(--site-gutter);
+}
 
 :root {
   /* ---- Color roles ------------------------------------------------- */
@@ -18,6 +25,14 @@
 
   /* Ratio guide from spec: ~70% Graphite/Off White, 20% Slate/Light Grey,
      10% Brand Blue (Violet used sparingly within that 10%). */
+
+  /* ---- Layout ------------------------------------------------------ */
+  /* One gutter for every section, header, and footer so column edges
+     line up down the whole page. 24px on phones → 64px from ~1422px up. */
+  --site-gutter: clamp(1.5rem, 4.5vw, 4rem);
+
+  /* Fixed header height — sections subtract this from viewport heights. */
+  --header-h: 72px;
 }
 
 * {
@@ -27,6 +42,11 @@
 html {
   scroll-behavior: smooth;
 }
+
+/* No global overflow-x guard here on purpose: `clip`/`hidden` on the root
+   forces the other axis away from `visible` too, which costs more than it
+   buys. Every oversized decorative ring/glow is instead clipped by the
+   `overflow-hidden` section that owns it. */
 
 body {
   margin: 0;
@@ -63,6 +83,16 @@ a {
   font-weight: 700;
   letter-spacing: -0.05em;
   line-height: 0.9;
+}
+
+/* Display type is set in vw-driven clamps; a single long word ("capabilities.",
+   "Understand") can still out-measure a narrow phone. Let those break rather
+   than punch out of the section. */
+.type-display,
+.type-h1,
+.type-h2,
+.type-h3 {
+  overflow-wrap: break-word;
 }
 
 /* H2 / H3 — League Spartan SemiBold — sub-section, card titles */

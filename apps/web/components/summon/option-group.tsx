@@ -41,7 +41,7 @@ export function OptionGroup<T extends string>({
               aria-checked={isActive}
               name={name}
               onClick={() => onChange(option.value)}
-              className={`type-nav border px-4 py-2.5 text-[9px] transition-all duration-200 ${
+              className={`type-nav min-h-[44px] border px-4 py-2.5 text-[9px] transition-all duration-200 ${
                 isActive
                   ? "border-[#22B8F0] bg-[#22B8F0] text-[#111827]"
                   : "border-[#E2E8F0]/15 text-[#94A3B8] hover:border-[#22B8F0]/50 hover:text-[#F8FAFC]"

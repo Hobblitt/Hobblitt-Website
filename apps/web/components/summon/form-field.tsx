@@ -40,7 +40,9 @@ export function FormField(props: InputProps | TextareaProps) {
       .filter(Boolean)
       .join(" ") || undefined;
 
-  const sharedClassName = `w-full border bg-[#0B1120] px-4 py-3.5 type-body text-sm text-[#F8FAFC] placeholder:text-[#475569] transition-colors duration-200 focus:outline-none focus:ring-1 ${
+  // text-base (16px) below sm is deliberate: iOS Safari zooms the viewport
+  // when a focused field is under 16px, and it never zooms back out.
+  const sharedClassName = `w-full border bg-[#0B1120] px-4 py-3.5 type-body text-base text-[#F8FAFC] placeholder:text-[#475569] transition-colors duration-200 focus:outline-none focus:ring-1 sm:text-sm ${
     props.error
       ? "border-[#F87171] focus:border-[#F87171] focus:ring-[#F87171]"
       : "border-[#E2E8F0]/15 focus:border-[#22B8F0] focus:ring-[#22B8F0]"

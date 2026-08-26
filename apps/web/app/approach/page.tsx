@@ -30,23 +30,23 @@ export default function ApproachPage() {
           }}
         />
 
-        <div className="relative mx-auto max-w-[1440px] px-6 pb-28 pt-32 md:px-10 md:pb-36 md:pt-40 lg:px-16 lg:pb-40 lg:pt-44">
-          <div className="grid grid-cols-1 gap-10 md:grid-cols-[220px_minmax(0,1fr)] lg:grid-cols-[250px_minmax(0,1fr)]">
+        <div className="relative mx-auto max-w-[1440px] px-margin pb-24 pt-24 md:pb-36 md:pt-40 lg:pb-40 lg:pt-44">
+          <div className="grid grid-cols-1 gap-8 md:gap-10 lg:grid-cols-[200px_minmax(0,1fr)] xl:grid-cols-[250px_minmax(0,1fr)]">
             <div>
               <p className="type-caption text-[9px] text-[#22B8F0]">
                 {approachHero.eyebrow}
               </p>
-              <p className="type-caption mt-4 hidden max-w-[180px] text-[8px] leading-5 text-[#475569] md:block">
+              <p className="type-caption mt-4 hidden max-w-[180px] text-[8px] leading-5 text-[#475569] lg:block">
                 {approachHero.kicker}
               </p>
             </div>
 
-            <div className="max-w-[980px]">
-              <p className="type-caption mb-7 text-[8px] text-[#64748B] md:hidden">
+            <div className="min-w-0 max-w-[980px]">
+              <p className="type-caption mb-7 text-[8px] text-[#64748B] lg:hidden">
                 {approachHero.kicker}
               </p>
 
-              <h1 className="type-h1 text-[clamp(3.4rem,7.2vw,7.8rem)] tracking-[-0.065em]">
+              <h1 className="type-h1 text-[clamp(2.5rem,7.2vw,7.8rem)] tracking-[-0.065em]">
                 Listen
                 <span className="text-[#22B8F0]"> → </span>
                 Understand
@@ -68,7 +68,7 @@ export default function ApproachPage() {
 
       {/* PROCESS */}
       <PageSection sectionLabel="02 / THE PROCESS" tone="light">
-        <h2 className="type-h1 text-[clamp(3rem,6vw,6.5rem)]">
+        <h2 className="type-h1 text-[clamp(2.5rem,6vw,6.5rem)]">
           Five steps.
           <br />
           <span className="text-[#22B8F0]">One direction.</span>
@@ -79,7 +79,7 @@ export default function ApproachPage() {
             <SpecRow
               key={step.number}
               tone="light"
-              columns="md:grid-cols-[70px_220px_minmax(0,1fr)] lg:grid-cols-[70px_260px_minmax(0,1fr)]"
+              columns="lg:grid-cols-[70px_200px_minmax(0,1fr)] xl:grid-cols-[70px_260px_minmax(0,1fr)]"
               number={step.number}
               title={
                 <span className="flex items-center gap-3">
@@ -103,7 +103,7 @@ export default function ApproachPage() {
         sectionLabel={`03 / ${approachPrinciple.eyebrow}`}
         tone="dark"
       >
-        <h2 className="type-h1 max-w-[950px] text-[clamp(3.5rem,7vw,7.5rem)]">
+        <h2 className="type-h1 max-w-[950px] text-[clamp(2.75rem,7vw,7.5rem)]">
           {approachPrinciple.title}
           <br />
           <span className="text-[#22B8F0]">{approachPrinciple.highlight}</span>
@@ -118,7 +118,7 @@ export default function ApproachPage() {
 
       {/* CTA */}
       <PageSection sectionLabel={approachCta.eyebrow} tone="accent">
-        <h2 className="type-display max-w-[900px] text-[clamp(3.5rem,7vw,7.5rem)]">
+        <h2 className="type-display max-w-[900px] text-[clamp(2.75rem,7vw,7.5rem)]">
           {approachCta.title}
         </h2>
 

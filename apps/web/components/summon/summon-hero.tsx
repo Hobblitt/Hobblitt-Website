@@ -16,14 +16,14 @@ export function SummonHero() {
       <div className="hero-grid pointer-events-none absolute inset-0 opacity-30" />
       <div className="pointer-events-none absolute -right-40 top-1/2 h-[500px] w-[500px] -translate-y-1/2 rounded-full bg-[#22B8F0]/[0.05] blur-[120px]" />
 
-      <div className="relative mx-auto max-w-[1440px] px-6 pb-20 pt-28 md:px-10 md:pb-24 md:pt-36 lg:px-16">
+      <div className="relative mx-auto max-w-[1440px] px-margin pb-20 pt-24 md:pb-24 md:pt-36">
         <p className="type-caption text-[9px] text-[#22B8F0]">
           01 / SUMMON HOBBLITT
         </p>
 
-        <div className="mt-8 grid gap-14 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
-          <div>
-            <h1 className="type-h1 max-w-[1000px] text-[clamp(3.5rem,7.5vw,7.5rem)]">
+        <div className="mt-8 grid gap-10 lg:grid-cols-[1.15fr_minmax(0,0.85fr)] lg:items-end lg:gap-14">
+          <div className="min-w-0">
+            <h1 className="type-h1 max-w-[1000px] text-[clamp(2.75rem,7.5vw,7.5rem)]">
               Got something
               <br />
               worth
@@ -31,7 +31,7 @@ export function SummonHero() {
               <span className="text-[#22B8F0]">building?</span>
             </h1>
 
-            <p className="type-body mt-10 max-w-[600px] text-[17px] leading-8 text-[#94A3B8]">
+            <p className="type-body mt-8 max-w-[600px] text-base leading-8 text-[#94A3B8] md:mt-10 md:text-[17px]">
               Tell us what is stuck, what you are trying to build, or where you
               want to go next. We will figure out the right place to start.
             </p>

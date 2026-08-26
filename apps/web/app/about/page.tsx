@@ -22,19 +22,19 @@ export default function AboutPage() {
       <section className="relative overflow-hidden border-b border-[#E2E8F0]/10">
         <div className="hero-grid absolute inset-0 opacity-40" />
 
-        <div className="relative mx-auto grid min-h-[calc(100vh-72px)] max-w-[1440px] grid-cols-1 gap-12 px-6 pb-20 pt-28 md:grid-cols-[240px_1fr] md:gap-12 md:px-10 md:pb-24 md:pt-36 lg:px-16">
+        <div className="relative mx-auto grid min-h-[calc(100dvh-72px)] max-w-[1440px] grid-cols-1 gap-8 px-margin pb-20 pt-24 md:gap-10 md:pb-24 md:pt-36 lg:grid-cols-[200px_minmax(0,1fr)] lg:gap-12">
           <div>
             <p className="type-caption text-[9px] text-[#22B8F0]">
               {hero.section}
             </p>
           </div>
 
-          <div className="max-w-[960px]">
+          <div className="min-w-0 max-w-[960px]">
             <p className="type-caption mb-7 text-[9px] text-[#64748B]">
               {hero.eyebrow}
             </p>
 
-            <h1 className="type-display max-w-[950px] text-[clamp(3.75rem,7.5vw,8rem)]">
+            <h1 className="type-display max-w-[950px] text-[clamp(2.75rem,9vw,8rem)]">
               {hero.title.line1}
               <br />
               {hero.title.line2}
@@ -42,7 +42,7 @@ export default function AboutPage() {
               <span className="text-[#22B8F0]">{hero.title.highlight}</span>
             </h1>
 
-            <p className="type-body mt-10 max-w-[700px] text-lg leading-8 text-[#94A3B8] md:mt-12 md:text-xl">
+            <p className="type-body mt-8 max-w-[700px] text-base leading-8 text-[#94A3B8] md:mt-12 md:text-lg lg:text-xl">
               {hero.description}
             </p>
           </div>
@@ -51,7 +51,7 @@ export default function AboutPage() {
 
       {/* WHAT WE ARE */}
       <PageSection sectionLabel={whatWeAre.section} tone="tint">
-        <h2 className="type-h1 max-w-[1000px] text-[clamp(3rem,6vw,6.25rem)]">
+        <h2 className="type-h1 max-w-[1000px] text-[clamp(2.5rem,6vw,6.25rem)]">
           {whatWeAre.title.line1}
           <br />
           <span className="text-[#22B8F0]">{whatWeAre.title.highlight}</span>
@@ -85,7 +85,7 @@ export default function AboutPage() {
           {relationship.eyebrow}
         </p>
 
-        <h2 className="type-h1 max-w-[1000px] text-[clamp(3.25rem,6.5vw,7rem)]">
+        <h2 className="type-h1 max-w-[1000px] text-[clamp(2.5rem,6.5vw,7rem)]">
           {relationship.title.line1}
           <br />
           <span className="text-[#22B8F0]">{relationship.title.highlight}</span>
@@ -100,7 +100,7 @@ export default function AboutPage() {
 
       {/* WHAT WE BRING */}
       <PageSection sectionLabel={whatWeBring.section} tone="light">
-        <h2 className="type-h1 max-w-[850px] text-[clamp(3.5rem,6.5vw,7rem)]">
+        <h2 className="type-h1 max-w-[850px] text-[clamp(2.5rem,6.5vw,7rem)]">
           {whatWeBring.title.line1}
           <br />
           <span className="text-[#22B8F0]">{whatWeBring.title.highlight}</span>
@@ -114,7 +114,7 @@ export default function AboutPage() {
               number={item.number}
               title={item.title}
               description={item.description}
-              columns="md:grid-cols-[64px_260px_1fr]"
+              columns="lg:grid-cols-[60px_200px_minmax(0,1fr)] xl:grid-cols-[64px_260px_minmax(0,1fr)]"
             />
           ))}
         </SpecList>
@@ -133,7 +133,7 @@ export default function AboutPage() {
         tone="light"
         className="border-t-0"
       >
-        <h2 className="type-h1 max-w-[850px] text-[clamp(3rem,5.8vw,6rem)]">
+        <h2 className="type-h1 max-w-[850px] text-[clamp(2.5rem,5.8vw,6rem)]">
           {principles.title.line1}
           <br />
           {principles.title.line2}
@@ -147,7 +147,7 @@ export default function AboutPage() {
               number={item.number}
               title={item.title}
               description={item.description}
-              columns="md:grid-cols-[64px_300px_1fr]"
+              columns="lg:grid-cols-[60px_220px_minmax(0,1fr)] xl:grid-cols-[64px_300px_minmax(0,1fr)]"
             />
           ))}
         </SpecList>
@@ -155,7 +155,7 @@ export default function AboutPage() {
 
       {/* WHO WE HELP */}
       <PageSection sectionLabel={whoWeHelp.section} tone="dark">
-        <h2 className="type-h1 max-w-[900px] text-[clamp(3rem,5.8vw,6rem)]">
+        <h2 className="type-h1 max-w-[900px] text-[clamp(2.5rem,5.8vw,6rem)]">
           {whoWeHelp.title.line1}
           <br />
           <span className="text-[#22B8F0]">{whoWeHelp.title.highlight}</span>
@@ -167,11 +167,15 @@ export default function AboutPage() {
           {whoWeHelp.description}
         </p>
 
-        <div className="mt-10 grid border-y border-[#E2E8F0]/10 sm:grid-cols-5">
+        {/* Five across only from md — at sm each cell was ~128px, too narrow
+            for a tracked label like "BUSINESSES". gap-px over a tinted
+            wrapper draws the dividers, so they stay correct at 2, 3, or 5
+            columns without per-breakpoint nth-child border rules. */}
+        <div className="mt-10 grid grid-cols-2 gap-px border-y border-[#E2E8F0]/10 bg-[#E2E8F0]/10 sm:grid-cols-3 md:grid-cols-5">
           {whoWeHelp.clients.map((client, index) => (
             <div
               key={client}
-              className="group border-b border-[#E2E8F0]/10 px-4 py-5 transition-colors duration-300 hover:bg-[#F8FAFC]/[0.03] last:border-b-0 sm:border-b-0 sm:border-r sm:last:border-r-0"
+              className="group bg-[#111827] px-4 py-5 transition-colors duration-300 hover:bg-[#1A2438]"
             >
               <div className="type-caption mb-2 text-[8px] text-[#475569]">
                 0{index + 1}
@@ -186,7 +190,7 @@ export default function AboutPage() {
 
       {/* FINAL CTA */}
       <PageSection sectionLabel={cta.section} tone="accent">
-        <h2 className="type-display max-w-[900px] text-[clamp(3.75rem,7.5vw,8rem)]">
+        <h2 className="type-display max-w-[900px] text-[clamp(2.75rem,7.5vw,8rem)]">
           {cta.title.line1}
           <br />
           {cta.title.line2}

@@ -25,37 +25,40 @@ export function Hero({ activeCapability, onSelectCapability }: HeroProps) {
   };
 
   return (
-    <section className="relative flex min-h-[calc(100vh-72px)] items-center overflow-hidden bg-[#111827] text-[#F8FAFC]">
+    <section className="relative flex min-h-[calc(100dvh-72px)] items-center overflow-hidden bg-[#111827] text-[#F8FAFC]">
       {/* Background grid */}
       <div className="hero-grid pointer-events-none absolute inset-0 opacity-[0.12]" />
 
       {/* Ambient glow */}
-      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#22B8F0]/[0.035] blur-[120px]" />
+      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[600px] w-[600px] max-w-[100vw] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#22B8F0]/[0.035] blur-[120px]" />
 
       {/* Editorial vertical lines */}
-      <div className="pointer-events-none absolute left-[7%] top-0 hidden h-full w-px bg-[#E2E8F0]/[0.05] lg:block" />
-      <div className="pointer-events-none absolute right-[7%] top-0 hidden h-full w-px bg-[#E2E8F0]/[0.05] lg:block" />
+      <div className="pointer-events-none absolute left-[7%] top-0 hidden h-full w-px bg-[#E2E8F0]/[0.05] xl:block" />
+      <div className="pointer-events-none absolute right-[7%] top-0 hidden h-full w-px bg-[#E2E8F0]/[0.05] xl:block" />
 
-      <div className="relative z-10 mx-auto flex w-full max-w-screen-2xl flex-col px-margin py-20 md:py-28 lg:min-h-[calc(100vh-72px)] lg:flex-row lg:items-center lg:gap-16">
+      {/* pb clears the absolutely positioned info bar at the section's foot. */}
+      <div className="relative z-10 mx-auto flex w-full max-w-[1440px] flex-col px-margin pb-28 pt-20 md:pb-32 md:pt-28 xl:min-h-[calc(100dvh-72px)] xl:flex-row xl:items-center xl:gap-16">
         {/* ============================== HERO COPY */}
-        <div className="flex-1">
+        <div className="min-w-0 flex-1">
           <div className="mb-8 flex items-center gap-4">
-            <span className="h-px w-10 bg-[#22B8F0]" />
+            <span className="h-px w-8 shrink-0 bg-[#22B8F0] sm:w-10" />
             <span className="type-caption text-[9px] text-[#22B8F0]">
               DIGITAL PARTNERS · NOT VENDORS
             </span>
           </div>
 
-          {/* Display headline — League Spartan Black, hero only */}
-          <h1 className="type-display max-w-[900px] uppercase">
-            <span className="block text-[clamp(4rem,9vw,9rem)]">Hit a wall?</span>
-            <span className="mt-3 block text-[clamp(4rem,9vw,9rem)] text-[#22B8F0]">
-              Summon
-            </span>
-            <span className="block text-[clamp(4rem,9vw,9rem)]">Hobblitt.</span>
+          {/* Display headline — League Spartan Black, hero only.
+              Floor is 2.75rem, not 4rem: "Hit a wall?" set in Black at 64px
+              measures wider than a 375px viewport's text column. */}
+          {/* From xl the signal dial takes ~520px of the row, so the headline
+              scales off the narrower copy column rather than the full page. */}
+          <h1 className="type-display max-w-[900px] text-[clamp(2.75rem,11vw,9rem)] uppercase xl:text-[clamp(3.5rem,5.5vw,7rem)]">
+            <span className="block">Hit a wall?</span>
+            <span className="mt-2 block text-[#22B8F0] sm:mt-3">Summon</span>
+            <span className="block">Hobblitt.</span>
           </h1>
 
-          <p className="type-body mt-10 max-w-[600px] text-base leading-7 text-[#94A3B8] md:text-lg md:leading-8">
+          <p className="type-body mt-8 max-w-[600px] text-base leading-7 text-[#94A3B8] md:mt-10 md:text-lg md:leading-8">
             One integrated team helping ambitious businesses{" "}
             <span className="text-[#F8FAFC]">build</span>,{" "}
             <span className="text-[#F8FAFC]">automate</span>, and{" "}
@@ -81,8 +84,10 @@ export function Hero({ activeCapability, onSelectCapability }: HeroProps) {
           </div>
         </div>
 
-        {/* ============================== SIGNAL SYSTEM */}
-        <div className="relative mt-20 hidden h-[520px] w-[520px] shrink-0 items-center justify-center lg:flex">
+        {/* ============================== SIGNAL SYSTEM
+            Fixed 520px square. At lg it left only ~310px for the headline
+            column, so it now joins the row at xl where there is room for both. */}
+        <div className="relative hidden h-[520px] w-[520px] shrink-0 items-center justify-center xl:flex">
           <div className="absolute h-[430px] w-[430px] rounded-full border border-[#22B8F0]/10" />
           <div className="absolute h-[315px] w-[315px] rounded-full border border-[#22B8F0]/15" />
           <div className="absolute h-[195px] w-[195px] rounded-full border border-[#22B8F0]/20" />
@@ -153,14 +158,16 @@ export function Hero({ activeCapability, onSelectCapability }: HeroProps) {
 
       {/* Bottom info bar */}
       <div className="absolute inset-x-0 bottom-0">
-        <div className="mx-auto flex max-w-screen-2xl items-center justify-between border-t border-[#E2E8F0]/[0.08] px-margin py-5">
+        <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-4 border-t border-[#E2E8F0]/[0.08] px-margin py-5">
           <span className="type-caption text-[8px] text-[#64748B]">
             TECHNOLOGY · CREATIVITY · STRATEGY
           </span>
-          <span className="type-caption hidden text-[8px] text-[#64748B] sm:block">
+          <span className="type-caption hidden shrink-0 text-[8px] text-[#64748B] md:block">
             SCROLL TO EXPLORE ↓
           </span>
-          <span className="type-caption text-[8px] text-[#64748B]">01 / 10</span>
+          <span className="type-caption shrink-0 text-[8px] text-[#64748B]">
+            01 / 10
+          </span>
         </div>
       </div>
     </section>

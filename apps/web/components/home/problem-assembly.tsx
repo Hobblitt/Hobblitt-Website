@@ -64,9 +64,9 @@ export function ProblemAssembly() {
   )}`;
 
   return (
-    <section className="border-t border-[#E2E8F0]/10 bg-[#111827] px-margin py-28 md:py-36">
-      <div className="mx-auto max-w-screen-2xl">
-        <div className="grid gap-14 lg:grid-cols-[0.32fr_0.68fr]">
+    <section className="border-t border-[#E2E8F0]/10 bg-[#111827] px-margin py-20 md:py-28 lg:py-36">
+      <div className="mx-auto max-w-[1440px]">
+        <div className="grid gap-8 lg:grid-cols-[0.32fr_minmax(0,0.68fr)] lg:gap-14">
           {/* Label */}
           <div>
             <span className="type-caption text-[9px] text-[#22B8F0]">
@@ -75,12 +75,12 @@ export function ProblemAssembly() {
           </div>
 
           {/* Content */}
-          <div>
+          <div className="min-w-0">
             <p className="type-caption text-[9px] text-[#64748B]">
               PICK WHAT&apos;S ACTUALLY GOING ON.
             </p>
 
-            <h2 className="type-h1 mt-5 max-w-4xl text-4xl md:text-6xl lg:text-7xl">
+            <h2 className="type-h1 mt-5 max-w-4xl text-[clamp(2.25rem,7vw,4.5rem)]">
               One problem.
               <br />
               <span className="text-[#22B8F0]">Many capabilities.</span>
@@ -92,7 +92,10 @@ export function ProblemAssembly() {
               bring together for it.
             </p>
 
-            <div className="mt-14 grid gap-10 lg:grid-cols-[0.55fr_0.45fr] lg:items-start">
+            {/* Picker + result only sit side by side from xl. At lg this column
+                is ~610px wide, which left the result panel too narrow to hold
+                its three capability chips. */}
+            <div className="mt-10 grid gap-8 md:mt-14 xl:grid-cols-[0.55fr_minmax(0,0.45fr)] xl:items-start xl:gap-10">
               {/* Problem picker */}
               <div className="border border-[#E2E8F0]/10" role="tablist" aria-label="Common problems">
                 {problems.map((problem) => {
@@ -103,7 +106,7 @@ export function ProblemAssembly() {
                       role="tab"
                       aria-selected={isActive}
                       onClick={() => setActiveId(problem.id)}
-                      className={`flex w-full items-center justify-between gap-4 border-b border-[#E2E8F0]/10 px-6 py-5 text-left transition-colors duration-300 last:border-b-0 ${
+                      className={`flex w-full items-center justify-between gap-4 border-b border-[#E2E8F0]/10 px-5 py-5 text-left transition-colors duration-300 last:border-b-0 md:px-6 ${
                         isActive ? "bg-[#1A2438]" : "hover:bg-[#1A2438]/50"
                       }`}
                     >
@@ -128,14 +131,14 @@ export function ProblemAssembly() {
               </div>
 
               {/* Assembly result */}
-              <div className="border border-[#E2E8F0]/10 bg-[#0B1120] p-8">
+              <div className="border border-[#E2E8F0]/10 bg-[#0B1120] p-6 md:p-8">
                 <div className="flex flex-wrap gap-2">
                   {(Object.keys(capabilityMeta) as CapabilityKey[]).map((key) => {
                     const isOn = active.combo.includes(key);
                     return (
                       <div
                         key={key}
-                        className={`min-w-[110px] flex-1 border px-4 py-4 transition-all duration-500 ${
+                        className={`min-w-[104px] flex-1 border px-4 py-4 transition-all duration-500 ${
                           isOn ? "border-[#22B8F0] bg-[#22B8F0]/10" : "border-[#E2E8F0]/10 opacity-40"
                         }`}
                       >

@@ -7,40 +7,29 @@ type BrandLogoProps = {
   priority?: boolean;
 };
 
+/** Intrinsic size of the artwork — a tightly cropped ~4.97:1 wordmark. */
+const LOGO_WIDTH = 1600;
+const LOGO_HEIGHT = 322;
+
 export function BrandLogo({
   href = "/",
   className = "",
   priority = false,
 }: BrandLogoProps) {
+  // The artwork used to be a mostly-empty 5120x5120 square, which this
+  // component cropped with an overflow window and a centring transform. The
+  // file is cropped to the mark itself now, so it just needs a width.
   const logo = (
-    <span
-      className={`
-        relative
-        inline-flex
-        h-10
-        w-[180px]
-        shrink-0
-        overflow-hidden
-        ${className}
-      `}
+    <Image
+      src="/brand/hobblitt-logo.png"
+      alt=""
       aria-hidden="true"
-    >
-      <Image
-        src="/brand/hobblitt-logo.png"
-        alt=""
-        width={230}
-        height={230}
-        priority={priority}
-        className="
-          absolute
-          left-1/2
-          top-1/2
-          max-w-none
-          -translate-x-1/2
-          -translate-y-1/2
-        "
-      />
-    </span>
+      width={LOGO_WIDTH}
+      height={LOGO_HEIGHT}
+      priority={priority}
+      sizes="180px"
+      className={`h-auto w-[180px] shrink-0 ${className}`}
+    />
   );
 
   if (!href) {
