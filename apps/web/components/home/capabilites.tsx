@@ -65,21 +65,21 @@ export function Capabilities({
   return (
     <section
       id="capabilities"
-      className="border-t border-[#111827]/15 bg-[#F8FAFC] px-margin py-28 text-[#111827] md:py-36"
+      className="border-t border-[#111827]/15 bg-[#F8FAFC] px-margin py-20 text-[#111827] md:py-28 lg:py-36"
     >
-      <div className="mx-auto max-w-screen-2xl">
-        <div className="mb-20 grid gap-8 lg:grid-cols-[0.7fr_1.3fr]">
+      <div className="mx-auto max-w-[1440px]">
+        <div className="mb-12 grid gap-8 lg:mb-20 lg:grid-cols-[0.7fr_minmax(0,1.3fr)]">
           <div>
             <span className="type-caption text-[9px] text-[#22B8F0]">
               03 / CAPABILITIES
             </span>
           </div>
 
-          <div>
-            <h2 className="type-h1 max-w-5xl text-5xl md:text-7xl">
+          <div className="min-w-0">
+            <h2 className="type-h1 max-w-5xl text-[clamp(2.25rem,7vw,5rem)]">
               Three ways to move your business forward.
             </h2>
-            <p className="type-body mt-8 max-w-2xl text-base leading-7 text-[#64748B]">
+            <p className="type-body mt-6 max-w-2xl text-base leading-7 text-[#64748B] md:mt-8">
               One team, different capabilities. Strategy sits above it all,
               helping us figure out what combination of expertise the problem
               actually needs.
@@ -89,8 +89,8 @@ export function Capabilities({
 
         {/* Strategy rail — thin labelled band above the three capability bands,
             per spec pg. 13 (not repeated as a fourth interactive card). */}
-        <div className="mb-px flex items-center gap-3 border border-b-0 border-[#111827]/15 bg-[#111827] px-6 py-3">
-          <span className="h-1.5 w-1.5 rounded-full bg-[#7C3AED]" />
+        <div className="mb-px flex items-start gap-3 border border-b-0 border-[#111827]/15 bg-[#111827] px-5 py-3 md:items-center md:px-6">
+          <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[#7C3AED] md:mt-0" />
           <span className="type-caption text-[8px] text-[#94A3B8]">
             STRATEGY — THE LAYER ABOVE BUILD / AUTOMATE / GROW
           </span>
@@ -104,7 +104,7 @@ export function Capabilities({
               <button
                 key={capability.key}
                 onClick={() => onSelectCapability(capability.key)}
-                className={`group min-h-[430px] border-b border-[#111827]/15 p-8 text-left transition-all duration-500 last:border-b-0 lg:border-b-0 lg:border-r lg:last:border-r-0 md:p-10 ${
+                className={`group border-b border-[#111827]/15 p-6 text-left transition-all duration-500 last:border-b-0 sm:p-8 md:p-10 lg:min-h-[430px] lg:border-b-0 lg:border-r lg:last:border-r-0 ${
                   isActive
                     ? "bg-[#111827] text-white"
                     : "bg-[#F8FAFC] hover:bg-[#EEF2F5]"
@@ -129,8 +129,10 @@ export function Capabilities({
                   </span>
                 </div>
 
-                <div className="mt-24">
-                  <h3 className="type-h2 text-4xl">{capability.title}</h3>
+                <div className="mt-10 lg:mt-24">
+                  <h3 className="type-h2 text-3xl sm:text-4xl">
+                    {capability.title}
+                  </h3>
                   <p
                     className={`type-body mt-4 max-w-xs text-sm leading-6 ${
                       isActive ? "text-[#94A3B8]" : "text-[#64748B]"
@@ -140,7 +142,7 @@ export function Capabilities({
                   </p>
                 </div>
 
-                <div className="mt-10 flex flex-wrap gap-2">
+                <div className="mt-8 flex flex-wrap gap-2 lg:mt-10">
                   {capability.services.map((service) => (
                     <span
                       key={service}

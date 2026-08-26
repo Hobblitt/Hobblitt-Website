@@ -105,8 +105,8 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} noValidate className="space-y-10">
-      <div className="grid gap-8 sm:grid-cols-2">
+    <form onSubmit={handleSubmit} noValidate className="space-y-8 md:space-y-10">
+      <div className="grid gap-6 sm:grid-cols-2 sm:gap-8">
         <FormField
           label="NAME"
           name="name"
@@ -158,7 +158,7 @@ export function ContactForm() {
         onChange={(v) => updateField("buildType", v)}
       />
 
-      <div className="grid gap-8 sm:grid-cols-2">
+      <div className="grid gap-6 sm:grid-cols-2 sm:gap-8">
         <OptionGroup
           label="TIMELINE"
           name="timeline"
@@ -195,11 +195,11 @@ export function ContactForm() {
         </p>
       )}
 
-      <div className="flex flex-wrap items-center gap-6">
+      <div className="flex flex-wrap items-center gap-5 sm:gap-6">
         <button
           type="submit"
           disabled={submitState === "submitting"}
-          className="type-nav inline-flex items-center gap-4 bg-[#22B8F0] px-7 py-4 text-[9px] text-[#111827] transition-all duration-300 hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0"
+          className="type-nav inline-flex min-h-[48px] w-full items-center justify-center gap-4 bg-[#22B8F0] px-7 py-4 text-[9px] text-[#111827] transition-all duration-300 hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0 sm:w-auto sm:justify-start"
         >
           {submitState === "submitting" ? "SENDING…" : "SEND THIS TO HOBBLITT"}
           {submitState !== "submitting" && <span aria-hidden="true">↗</span>}

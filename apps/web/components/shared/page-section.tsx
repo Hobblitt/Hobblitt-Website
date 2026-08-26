@@ -35,13 +35,16 @@ export function PageSection({
       id={id}
       className={`border-t ${toneStyles[tone]} ${className ?? ""}`}
     >
-      <div className="mx-auto grid max-w-[1440px] grid-cols-1 gap-12 px-6 py-20 md:grid-cols-[240px_1fr] md:gap-12 md:px-10 md:py-28 lg:px-16">
+      {/* The label column only splits off at lg. At md a 240px rail left the
+          content column too narrow for the three-column spec rows inside it,
+          so below lg the label simply stacks above full-width content. */}
+      <div className="mx-auto grid max-w-[1440px] grid-cols-1 gap-8 px-margin py-20 md:gap-10 md:py-28 lg:grid-cols-[200px_minmax(0,1fr)] lg:gap-12">
         <div className={labelColClassName}>
           <p className="type-caption text-[9px] text-[#22B8F0]">
             {sectionLabel}
           </p>
         </div>
-        <div className="max-w-[1080px]">{children}</div>
+        <div className="min-w-0 max-w-[1080px]">{children}</div>
       </div>
     </section>
   );

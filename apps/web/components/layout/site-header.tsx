@@ -49,7 +49,7 @@ export function SiteHeader() {
           "bg-[#111827]",
         )}
       >
-        <div className="mx-auto flex h-full max-w-[1440px] items-center justify-between px-6 md:px-10 lg:px-16">
+        <div className="mx-auto flex h-full max-w-[1440px] items-center justify-between gap-4 px-margin">
           {/* Logo */}
           <Link
             href="/"
@@ -63,20 +63,26 @@ export function SiteHeader() {
               }
             }}
           >
+            {/* 1600x322 is the artwork's real intrinsic size. The old 170x42
+                props did not match the file's 1:1 ratio, so `h-auto` resolved
+                to a 138px-tall box in a 72px header and pushed the artwork's
+                edges outside it. */}
             <Image
               src="/brand/hobblitt-logo.png"
               alt="Hobblitt"
-              width={170}
-              height={42}
+              width={1600}
+              height={322}
               priority
-              className="h-auto w-[138px] object-contain md:w-[158px]"
+              sizes="158px"
+              className="h-auto w-[138px] md:w-[158px]"
             />
           </Link>
 
-          {/* Desktop nav */}
-          <div className="hidden items-center gap-8 md:flex">
+          {/* Desktop nav — needs ~700px beside the logo, which only clears
+              from lg up; below that the mobile toggle takes over. */}
+          <div className="hidden items-center gap-6 lg:flex xl:gap-8">
             <nav aria-label="Primary navigation">
-              <ul className="flex items-center gap-8">
+              <ul className="flex items-center gap-6 xl:gap-8">
                 {navigation.map((item) => {
                   const isActive = pathname === item.href;
                   return (
@@ -146,13 +152,13 @@ export function SiteHeader() {
             aria-controls="mobile-navigation"
             onClick={() => setMenuOpen((open) => !open)}
             className={cn(
-              "inline-flex items-center gap-3 border px-4 py-3",
+              "inline-flex shrink-0 items-center gap-3 border px-4 py-3",
               "type-nav text-[9px]",
               "transition-all duration-300",
               menuOpen
                 ? "border-[#22B8F0] bg-[#22B8F0] text-[#111827]"
                 : "border-[#22B8F0]/50 text-[#22B8F0] hover:border-[#22B8F0]",
-              "md:hidden",
+              "lg:hidden",
             )}
           >
             <span>{menuOpen ? "CLOSE" : "MENU"}</span>
@@ -167,8 +173,11 @@ export function SiteHeader() {
       <div
         id="mobile-navigation"
         className={cn(
-          "fixed inset-x-0 top-[72px] z-40 md:hidden",
+          "fixed inset-x-0 top-[72px] z-40 lg:hidden",
           "border-b border-[#E2E8F0]/10 bg-[#111827]",
+          // Landscape phones are only ~375px tall — let the panel scroll
+          // instead of running off the bottom of the screen.
+          "max-h-[calc(100dvh-72px)] overflow-y-auto overscroll-contain",
           "transition-all duration-300",
           menuOpen
             ? "visible translate-y-0 opacity-100"
@@ -177,7 +186,7 @@ export function SiteHeader() {
       >
         <nav
           aria-label="Mobile navigation"
-          className="mx-auto max-w-[1440px] px-6 py-6"
+          className="mx-auto max-w-[1440px] px-margin py-6"
         >
           <div className="border border-[#E2E8F0]/10 bg-[#111827]">
             {navigation.map((item) => {

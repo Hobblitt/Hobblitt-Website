@@ -78,9 +78,9 @@ export function VideoExplainer({
   };
 
   return (
-    <section className="border-t border-[#E2E8F0]/10 bg-[#111827] px-margin py-28 md:py-36">
-      <div className="mx-auto max-w-screen-2xl">
-        <div className="grid gap-14 lg:grid-cols-[0.32fr_0.68fr]">
+    <section className="border-t border-[#E2E8F0]/10 bg-[#111827] px-margin py-20 md:py-28 lg:py-36">
+      <div className="mx-auto max-w-[1440px]">
+        <div className="grid gap-8 lg:grid-cols-[0.32fr_minmax(0,0.68fr)] lg:gap-14">
           {/* Label */}
           <div>
             <span className="type-caption text-[9px] text-[#22B8F0]">
@@ -89,9 +89,9 @@ export function VideoExplainer({
           </div>
 
           {/* Content */}
-          <div>
+          <div className="min-w-0">
             <div className="flex items-center gap-3">
-              <span className="relative flex h-1.5 w-1.5">
+              <span className="relative flex h-1.5 w-1.5 shrink-0">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#22B8F0] opacity-60" />
                 <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-[#22B8F0]" />
               </span>
@@ -100,7 +100,7 @@ export function VideoExplainer({
               </p>
             </div>
 
-            <h2 className="type-h1 mt-5 max-w-4xl text-4xl md:text-6xl lg:text-7xl">
+            <h2 className="type-h1 mt-5 max-w-4xl text-[clamp(2rem,6.5vw,4.5rem)]">
               {title}
             </h2>
 
@@ -138,7 +138,7 @@ export function VideoExplainer({
             )}
 
             {/* Video frame */}
-            <div className="relative mx-auto mt-14 w-full max-w-[1100px]">
+            <div className="relative mx-auto mt-10 w-full max-w-[1100px] md:mt-14">
               {/* Ambient glow behind the frame */}
               <div className="pointer-events-none absolute -inset-6 -z-10 bg-[#22B8F0]/[0.04] blur-[60px]" />
 

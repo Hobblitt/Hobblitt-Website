@@ -13,8 +13,8 @@ const footerNavigation = [
 export function SiteFooter({ className }: { className?: string }) {
   return (
     <footer className={`border-t border-[#E2E8F0]/10 bg-[#111827] px-margin py-14 ${className ?? ""}`}>
-      <div className="mx-auto w-full max-w-screen-2xl">
-        <div className="flex flex-col gap-12 md:flex-row md:items-start md:justify-between">
+      <div className="mx-auto w-full max-w-[1440px]">
+        <div className="flex flex-col gap-12 md:flex-row md:flex-wrap md:items-start md:justify-between md:gap-x-10">
           {/* Brand */}
           <div>
             <BrandLogo />
@@ -57,7 +57,7 @@ export function SiteFooter({ className }: { className?: string }) {
           </div>
         </div>
 
-        <div className="mt-14 flex flex-col gap-3 border-t border-[#E2E8F0]/[0.08] pt-5 md:flex-row md:items-center md:justify-between">
+        <div className="mt-14 flex flex-col gap-3 border-t border-[#E2E8F0]/[0.08] pt-5 sm:flex-row sm:items-center sm:justify-between">
           <span className="type-caption text-[8px] text-[#475569]">
             TECHNOLOGY · CREATIVITY · STRATEGY
           </span>

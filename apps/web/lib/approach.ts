@@ -6,7 +6,12 @@ export const approachHero = {
     "We start by understanding the business, not just the brief. Then we bring the right capabilities around the problem and keep moving until the work creates momentum.",
 };
 
-export const approachSteps = [
+export const approachSteps: {
+  number: string;
+  title: string;
+  description: string;
+  accent: "blue" | "violet";
+}[] = [
   {
     number: "01",
     title: "LISTEN",

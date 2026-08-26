@@ -17,19 +17,19 @@ export default function PricingPage() {
       <section className="relative overflow-hidden border-b border-[#E2E8F0]/10">
         <div className="hero-grid absolute inset-0 opacity-40" />
 
-        <div className="relative mx-auto grid min-h-[calc(100vh-72px)] max-w-[1440px] grid-cols-1 gap-16 px-6 pb-24 pt-32 md:grid-cols-[260px_1fr] md:px-10 md:pt-40 lg:px-16">
+        <div className="relative mx-auto grid min-h-[calc(100dvh-72px)] max-w-[1440px] grid-cols-1 gap-8 px-margin pb-24 pt-24 md:gap-10 md:pt-40 lg:grid-cols-[200px_minmax(0,1fr)] lg:gap-16">
           <div>
             <p className="type-caption text-[9px] text-[#22B8F0]">
               01 / PRICING
             </p>
           </div>
 
-          <div className="max-w-[1050px]">
+          <div className="min-w-0 max-w-[1050px]">
             <p className="type-caption mb-8 text-[9px] text-[#64748B]">
               THE WORK DEFINES THE ENGAGEMENT.
             </p>
 
-            <h1 className="type-h1 text-[clamp(4rem,8vw,8.5rem)]">
+            <h1 className="type-h1 text-[clamp(2.75rem,9vw,8.5rem)]">
               The right
               <br />
               way to work
@@ -37,7 +37,7 @@ export default function PricingPage() {
               <span className="text-[#22B8F0]">depends on the problem.</span>
             </h1>
 
-            <p className="type-body mt-12 max-w-[760px] text-lg leading-8 text-[#94A3B8] md:text-xl">
+            <p className="type-body mt-10 max-w-[760px] text-base leading-8 text-[#94A3B8] md:mt-12 md:text-lg lg:text-xl">
               There is no single Hobblitt package. We start with what you are
               trying to achieve, understand what is getting in the way, and
               shape the engagement around the work that actually matters.
@@ -48,7 +48,7 @@ export default function PricingPage() {
 
       {/* ENGAGEMENTS */}
       <PageSection sectionLabel="02 / ENGAGEMENT" tone="light">
-        <h2 className="type-h1 max-w-[1000px] text-[clamp(3.5rem,6vw,6.5rem)]">
+        <h2 className="type-h1 max-w-[1000px] text-[clamp(2.5rem,6vw,6.5rem)]">
           Three ways to work together.
           <br />
           <span className="text-[#22B8F0]">One direction.</span>
@@ -59,7 +59,7 @@ export default function PricingPage() {
             <SpecRow
               key={engagement.number}
               tone="light"
-              columns="md:grid-cols-[80px_240px_1fr]"
+              columns="lg:grid-cols-[70px_200px_minmax(0,1fr)] xl:grid-cols-[80px_240px_minmax(0,1fr)]"
               number={engagement.number}
               title={engagement.title}
               description={engagement.description}
@@ -87,7 +87,7 @@ export default function PricingPage() {
 
       {/* PRICING PRINCIPLE */}
       <PageSection sectionLabel="03 / THE PRINCIPLE" tone="dark">
-        <h2 className="type-h1 max-w-[1050px] text-[clamp(3.5rem,7vw,7.5rem)]">
+        <h2 className="type-h1 max-w-[1050px] text-[clamp(2.75rem,7vw,7.5rem)]">
           We price the
           <br />
           <span className="text-[#22B8F0]">work.</span>
@@ -106,7 +106,7 @@ export default function PricingPage() {
             <SpecRow
               key={principle.number}
               tone="dark"
-              columns="md:grid-cols-[80px_280px_1fr]"
+              columns="lg:grid-cols-[70px_220px_minmax(0,1fr)] xl:grid-cols-[80px_280px_minmax(0,1fr)]"
               number={principle.number}
               title={principle.title}
               description={principle.description}
@@ -117,7 +117,7 @@ export default function PricingPage() {
 
       {/* FAQ */}
       <PageSection sectionLabel="04 / QUESTIONS" tone="light">
-        <h2 className="type-h1 max-w-[900px] text-[clamp(3.5rem,6vw,6.5rem)]">
+        <h2 className="type-h1 max-w-[900px] text-[clamp(2.5rem,6vw,6.5rem)]">
           A few things
           <br />
           worth knowing.
@@ -128,7 +128,7 @@ export default function PricingPage() {
             <SpecRow
               key={faq.question}
               tone="light"
-              columns="md:grid-cols-[300px_1fr]"
+              columns="lg:grid-cols-[minmax(0,260px)_minmax(0,1fr)] xl:grid-cols-[minmax(0,300px)_minmax(0,1fr)]"
               title={faq.question}
               description={faq.answer}
             />
@@ -142,7 +142,7 @@ export default function PricingPage() {
         tone="accent"
         className="min-h-[520px]"
       >
-        <h2 className="type-display max-w-[950px] text-[clamp(4rem,8vw,8rem)]">
+        <h2 className="type-display max-w-[950px] text-[clamp(2.75rem,8vw,8rem)]">
           Got something
           <br />
           worth building?

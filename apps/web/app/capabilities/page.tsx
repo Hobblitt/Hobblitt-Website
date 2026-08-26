@@ -20,20 +20,20 @@ export default function CapabilitiesPage() {
           }}
         />
 
-        <div className="relative mx-auto max-w-[1440px] px-6 pb-24 pt-36 md:px-10 md:pb-32 md:pt-44 lg:px-16 lg:pb-40">
-          <div className="grid gap-14 lg:grid-cols-[220px_1fr] lg:gap-20">
+        <div className="relative mx-auto max-w-[1440px] px-margin pb-24 pt-28 md:pb-32 md:pt-44 lg:pb-40">
+          <div className="grid gap-8 lg:grid-cols-[200px_minmax(0,1fr)] lg:gap-14 xl:gap-20">
             <div>
               <p className="type-caption text-[9px] text-[#22B8F0]">
                 {hero.section}
               </p>
             </div>
 
-            <div className="max-w-[1000px]">
+            <div className="min-w-0 max-w-[1000px]">
               <p className="type-caption mb-7 text-[9px] text-[#64748B]">
                 {hero.eyebrow}
               </p>
 
-              <h1 className="type-h1 max-w-[950px] text-[clamp(4rem,8vw,8.5rem)] text-[#F8FAFC]">
+              <h1 className="type-h1 max-w-[950px] text-[clamp(2.75rem,8vw,8.5rem)] text-[#F8FAFC]">
                 {hero.title.line1}
                 <br />
                 {hero.title.line2}
@@ -41,7 +41,7 @@ export default function CapabilitiesPage() {
                 <span className="text-[#22B8F0]">{hero.title.highlight}</span>
               </h1>
 
-              <p className="type-body mt-10 max-w-[720px] text-[17px] leading-8 text-[#94A3B8] md:text-[19px]">
+              <p className="type-body mt-8 max-w-[720px] text-[16px] leading-8 text-[#94A3B8] md:mt-10 md:text-[19px]">
                 {hero.description}
               </p>
             </div>
@@ -57,8 +57,8 @@ export default function CapabilitiesPage() {
         tone="light"
         className="border-t-0"
       >
-        <div className="mb-16 max-w-[850px]">
-          <h2 className="type-h1 text-[clamp(3.5rem,6vw,6.5rem)]">
+        <div className="mb-12 max-w-[850px] md:mb-16">
+          <h2 className="type-h1 text-[clamp(2.5rem,6vw,6.5rem)]">
             {capabilities.title.line1}
             <br />
             <span className="text-[#22B8F0]">
@@ -71,23 +71,25 @@ export default function CapabilitiesPage() {
           {capabilities.items.map((capability) => (
             <article
               key={capability.number}
-              className="group border-b border-[#CBD5E1] py-12 md:py-16"
+              className="group border-b border-[#CBD5E1] py-10 md:py-16"
             >
-              <div className="grid gap-8 md:grid-cols-[60px_220px_1fr] md:gap-10 lg:grid-cols-[70px_260px_1fr]">
+              {/* lg, not md: inside PageSection this column is full-width only
+                  below lg, and three tracks at md left no room for the copy. */}
+              <div className="grid gap-6 md:gap-8 lg:grid-cols-[60px_200px_minmax(0,1fr)] lg:gap-10 xl:grid-cols-[70px_260px_minmax(0,1fr)]">
                 <span className="type-caption text-[9px] text-[#0EA5E9]">
                   {capability.number}
                 </span>
 
-                <h3 className="type-h2 text-2xl md:text-3xl">
+                <h3 className="type-h2 text-2xl xl:text-3xl">
                   {capability.title}
                 </h3>
 
-                <div>
-                  <p className="type-body max-w-[650px] text-[16px] leading-7 text-[#64748B] md:text-[17px]">
+                <div className="min-w-0">
+                  <p className="type-body max-w-[650px] text-[15px] leading-7 text-[#64748B] sm:text-[16px] xl:text-[17px]">
                     {capability.description}
                   </p>
 
-                  <div className="mt-8 flex flex-wrap gap-2">
+                  <div className="mt-6 flex flex-wrap gap-2 md:mt-8">
                     {capability.services.map((service) => (
                       <span
                         key={service}
@@ -110,7 +112,7 @@ export default function CapabilitiesPage() {
           {together.eyebrow}
         </p>
 
-        <h2 className="type-h1 max-w-[1000px] text-[clamp(3.5rem,6vw,6.8rem)] text-[#F8FAFC]">
+        <h2 className="type-h1 max-w-[1000px] text-[clamp(2.5rem,6vw,6.8rem)] text-[#F8FAFC]">
           {together.title.line1}
           <br />
           <span className="text-[#22B8F0]">{together.title.highlight}</span>
@@ -130,7 +132,7 @@ export default function CapabilitiesPage() {
 
       {/* CTA */}
       <PageSection sectionLabel={cta.section} tone="accent">
-        <h2 className="type-h1 max-w-[1000px] text-[clamp(4rem,7vw,7.5rem)]">
+        <h2 className="type-h1 max-w-[1000px] text-[clamp(2.75rem,7vw,7.5rem)]">
           {cta.title.line1}
           <br />
           {cta.title.line2}

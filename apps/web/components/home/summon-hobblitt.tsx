@@ -4,24 +4,26 @@ export function SummonHobblitt() {
   return (
     <section
       id="summon"
-      className="relative overflow-hidden border-t border-[#E2E8F0]/10 bg-[#22B8F0] px-margin py-28 text-[#111827] md:py-40"
+      className="relative overflow-hidden border-t border-[#E2E8F0]/10 bg-[#22B8F0] px-margin py-20 text-[#111827] md:py-28 lg:py-40"
     >
       <div className="pointer-events-none absolute inset-0 opacity-20">
-        <div className="absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#111827]" />
-        <div className="absolute left-1/2 top-1/2 h-[360px] w-[360px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#111827]" />
-        <div className="absolute left-1/2 top-1/2 h-[220px] w-[220px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#111827]" />
+        <div className="absolute left-1/2 top-1/2 h-[500px] w-[500px] max-w-[100vw] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#111827]" />
+        <div className="absolute left-1/2 top-1/2 h-[360px] w-[360px] max-w-[100vw] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#111827]" />
+        <div className="absolute left-1/2 top-1/2 h-[220px] w-[220px] max-w-[100vw] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#111827]" />
       </div>
 
-      <div className="relative mx-auto max-w-screen-2xl">
-        <div className="grid gap-12 lg:grid-cols-[0.32fr_0.68fr]">
+      <div className="relative mx-auto max-w-[1440px]">
+        <div className="grid gap-8 lg:grid-cols-[0.32fr_minmax(0,0.68fr)] lg:gap-12">
           <div>
             <span className="type-caption text-[9px]">09 / SUMMON</span>
           </div>
 
-          <div>
+          <div className="min-w-0">
             <p className="type-caption text-[9px] opacity-60">GOT SOMETHING WORTH BUILDING?</p>
 
-            <h2 className="type-display mt-5 max-w-5xl text-6xl md:text-8xl lg:text-[9rem]">
+            {/* Was lg:text-[9rem] — 144px "HOBBLITT." ran past the 0.68fr
+                column it sits in. */}
+            <h2 className="type-display mt-5 max-w-5xl text-[clamp(2.75rem,9vw,7.5rem)]">
               HIT A WALL?
               <br />
               <span className="opacity-60">SUMMON</span>
@@ -29,7 +31,7 @@ export function SummonHobblitt() {
               HOBBLITT.
             </h2>
 
-            <p className="type-body mt-10 max-w-xl text-base leading-7 opacity-70 md:text-lg">
+            <p className="type-body mt-8 max-w-xl text-base leading-7 opacity-70 md:mt-10 md:text-lg">
               You don&apos;t need the perfect brief. You don&apos;t even need to know exactly
               what you need yet.
               <br />

@@ -31,46 +31,46 @@ export function HowWeWork() {
   return (
     <section
       id="approach"
-      className="border-t border-[#E2E8F0]/10 bg-[#111827] py-28 md:py-36"
+      className="border-t border-[#E2E8F0]/10 bg-[#111827] py-20 md:py-28 lg:py-36"
     >
-      <div className="mx-auto max-w-screen-2xl px-margin">
-        <div className="grid gap-16 md:grid-cols-[0.32fr_0.68fr]">
+      <div className="mx-auto max-w-[1440px] px-margin">
+        <div className="grid gap-8 lg:grid-cols-[0.32fr_minmax(0,0.68fr)] lg:gap-16">
           <div>
             <p className="type-caption text-[9px] text-[#22B8F0]">
               06 / HOW WE WORK
             </p>
           </div>
 
-          <div>
+          <div className="min-w-0">
             <p className="type-caption mb-5 text-[10px] text-[#94A3B8]">
               DON&apos;T BRING US A BRIEF.
             </p>
 
-            <h2 className="type-h1 max-w-4xl text-4xl md:text-6xl lg:text-7xl">
+            <h2 className="type-h1 max-w-4xl text-[clamp(2.25rem,7vw,4.5rem)]">
               Bring us the <span className="text-[#22B8F0]">problem.</span>
             </h2>
 
-            <p className="type-body mt-8 max-w-2xl text-base leading-7 text-[#94A3B8] md:text-lg">
+            <p className="type-body mt-6 max-w-2xl text-base leading-7 text-[#94A3B8] md:mt-8 md:text-lg">
               You don&apos;t need to know exactly what you need before you call
               us. Tell us where you&apos;re stuck. We listen, understand the
               business, bring together the right capabilities, and build with
               you.
             </p>
 
-            <div className="mt-16 grid border border-[#E2E8F0]/10 md:grid-cols-2">
+            <div className="mt-12 grid border border-[#E2E8F0]/10 md:mt-16 md:grid-cols-2">
               {steps.map((step) => (
                 <article
                   key={step.number}
-                  className="group min-h-[240px] border-b border-[#E2E8F0]/10 p-7 transition-colors duration-300 hover:bg-[#1A2438] md:[&:nth-child(odd)]:border-r md:[&:nth-child(3)]:border-b-0 md:[&:nth-child(4)]:border-b-0"
+                  className="group border-b border-[#E2E8F0]/10 p-6 transition-colors duration-300 last:border-b-0 hover:bg-[#1A2438] md:min-h-[240px] md:p-7 md:[&:nth-child(3)]:border-b-0 md:[&:nth-child(4)]:border-b-0 md:[&:nth-child(odd)]:border-r"
                 >
-                  <div className="flex items-start justify-between">
+                  <div className="flex items-start justify-between gap-4">
                     <span className="type-caption text-[9px] text-[#22B8F0]">
                       {step.number}
                     </span>
-                    <ArrowUpRight className="size-4 text-[#475569] transition-all duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-[#22B8F0]" />
+                    <ArrowUpRight className="size-4 shrink-0 text-[#475569] transition-all duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-[#22B8F0]" />
                   </div>
 
-                  <div className="mt-20">
+                  <div className="mt-10 md:mt-20">
                     <h3 className="type-h2 text-2xl text-[#F8FAFC]">
                       {step.title}
                     </h3>
@@ -83,7 +83,7 @@ export function HowWeWork() {
             </div>
 
             <div className="mt-8 flex items-center gap-3">
-              <span className="h-px w-12 bg-[#22B8F0]" />
+              <span className="h-px w-12 shrink-0 bg-[#22B8F0]" />
               <span className="type-caption text-[9px] text-[#64748B]">
                 PARTNERS · NOT VENDORS
               </span>
