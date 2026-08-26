@@ -126,7 +126,7 @@ export function SelectedWork() {
                     {project.title}
                   </h3>
 
-                  <p className="type-body mt-5 max-w-[34rem] text-[15px] leading-7 text-[#64748B] md:text-base">
+                  <p className="type-body mt-5 max-w-[34rem] text-[15px] leading-7 text-[#64748B] md:text-base ">
                     {project.description}
                   </p>
                 </div>
