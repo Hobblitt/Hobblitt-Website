@@ -5,9 +5,10 @@ import type { FormEvent } from "react";
 
 import { FormField } from "@/components/summon/form-field";
 import { OptionGroup } from "@/components/summon/option-group";
+import { submitSummonLead } from "@/api/summon";
+
 import {
   initialSummonFormValues,
-  submitSummonLead,
   validateSummonForm,
   type BudgetRange,
   type BuildType,
