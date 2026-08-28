@@ -48,80 +48,73 @@ export async function handleCreateSummonLead(
   req: Request,
   res: Response,
 ): Promise<void> {
-  try {
-    const body = (req.body ?? {}) as SummonRequestBody;
+  const body = (req.body ?? {}) as SummonRequestBody;
 
-    const name = stringValue(body.name);
-    const email = stringValue(body.email).toLowerCase();
-    const company = stringValue(body.company);
-    const problem = stringValue(body.problem);
-    const buildType = stringValue(body.buildType);
-    const timeline = stringValue(body.timeline);
-    const budget = stringValue(body.budget);
-    const context = stringValue(body.context);
+  // Normalize incoming values
+  const name = stringValue(body.name);
+  const email = stringValue(body.email).toLowerCase();
+  const company = stringValue(body.company);
+  const problem = stringValue(body.problem);
+  const buildType = stringValue(body.buildType);
+  const timeline = stringValue(body.timeline);
+  const budget = stringValue(body.budget);
+  const context = stringValue(body.context);
 
-    const errors: Record<string, string> = {};
+  // Validation
+  const errors: Record<string, string> = {};
 
-    if (!name) {
-      errors.name = "Tell us who we're talking to.";
-    }
-
-    if (!email) {
-      errors.email = "We need a way to reach you.";
-    } else if (!EMAIL_PATTERN.test(email)) {
-      errors.email = "That doesn't look like a valid email.";
-    }
-
-    if (!problem) {
-      errors.problem = "Tell us what's stuck.";
-    } else if (problem.length < 10) {
-      errors.problem = "Please give us a little more detail.";
-    }
-
-    if (buildType && !BUILD_TYPES.has(buildType)) {
-      errors.buildType = "Invalid build type.";
-    }
-
-    if (timeline && !TIMELINES.has(timeline)) {
-      errors.timeline = "Invalid timeline.";
-    }
-
-    if (budget && !BUDGET_RANGES.has(budget)) {
-      errors.budget = "Invalid budget range.";
-    }
-
-    if (Object.keys(errors).length > 0) {
-      res.status(400).json({
-        success: false,
-        errors,
-      });
-
-      return;
-    }
-
-    const lead = await createSummonLead({
-      name,
-      email,
-      company: company || null,
-      problem,
-      buildType: buildType || null,
-      timeline: timeline || null,
-      budget: budget || null,
-      context: context || null,
-    });
-
-    res.status(201).json({
-      success: true,
-      message: "Lead received successfully.",
-      lead,
-    });
-  } catch (error) {
-    console.error("Summon submission failed:", error);
-
-    res.status(500).json({
-      success: false,
-      message:
-        "Something went wrong on our end. Please try again or email us directly.",
-    });
+  if (!name) {
+    errors.name = "Tell us who we're talking to.";
   }
+
+  if (!email) {
+    errors.email = "We need a way to reach you.";
+  } else if (!EMAIL_PATTERN.test(email)) {
+    errors.email = "That doesn't look like a valid email.";
+  }
+
+  if (!problem) {
+    errors.problem = "Tell us what's stuck.";
+  } else if (problem.length < 10) {
+    errors.problem = "Please give us a little more detail.";
+  }
+
+  if (buildType && !BUILD_TYPES.has(buildType)) {
+    errors.buildType = "Invalid build type.";
+  }
+
+  if (timeline && !TIMELINES.has(timeline)) {
+    errors.timeline = "Invalid timeline.";
+  }
+
+  if (budget && !BUDGET_RANGES.has(budget)) {
+    errors.budget = "Invalid budget range.";
+  }
+
+  if (Object.keys(errors).length > 0) {
+    res.status(400).json({
+      success: false,
+      errors,
+    });
+
+    return;
+  }
+
+  // Business/database operation lives in the service
+  const lead = await createSummonLead({
+    name,
+    email,
+    company: company || null,
+    problem,
+    buildType: buildType || null,
+    timeline: timeline || null,
+    budget: budget || null,
+    context: context || null,
+  });
+
+  res.status(201).json({
+    success: true,
+    message: "Lead received successfully.",
+    lead,
+  });
 }

@@ -1,17 +1,17 @@
 import cors from "cors";
 import express from "express";
 
-import { healthRoutes } from "./routes/health.routes.js";
-import { summonRoutes } from "./routes/summon.routes.js";
 
-export function createApp() {
-  const app = express();
+import { notFound } from "./middleware/not-found.js";
+import { apiRouter } from "./routes/index.js";
+import { errorHandler } from "./middleware/error_handler.js";
 
-  app.use(cors());
-  app.use(express.json({ limit: "1mb" }));
+export const app = express();
 
-  app.use("/api/health", healthRoutes);
-  app.use("/api/summon", summonRoutes);
+app.use(cors());
+app.use(express.json());
 
-  return app;
-}
+app.use("/api", apiRouter);
+
+app.use(notFound);
+app.use(errorHandler);
