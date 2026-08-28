@@ -40,8 +40,20 @@ const BUDGET_RANGES = new Set([
   "not-sure",
 ]);
 
+const LIMITS = {
+  name: 100,
+  email: 254,
+  company: 200,
+  problem: 5000,
+  context: 5000,
+} as const;
+
 function stringValue(value: unknown): string {
   return typeof value === "string" ? value.trim() : "";
+}
+
+function exceeds(value: string, limit: number): boolean {
+  return value.length > limit;
 }
 
 export async function handleCreateSummonLead(
@@ -50,7 +62,6 @@ export async function handleCreateSummonLead(
 ): Promise<void> {
   const body = (req.body ?? {}) as SummonRequestBody;
 
-  // Normalize incoming values
   const name = stringValue(body.name);
   const email = stringValue(body.email).toLowerCase();
   const company = stringValue(body.company);
@@ -60,25 +71,41 @@ export async function handleCreateSummonLead(
   const budget = stringValue(body.budget);
   const context = stringValue(body.context);
 
-  // Validation
   const errors: Record<string, string> = {};
 
+  // Required fields
   if (!name) {
     errors.name = "Tell us who we're talking to.";
+  } else if (exceeds(name, LIMITS.name)) {
+    errors.name = `Name must be ${LIMITS.name} characters or fewer.`;
   }
 
   if (!email) {
     errors.email = "We need a way to reach you.";
   } else if (!EMAIL_PATTERN.test(email)) {
     errors.email = "That doesn't look like a valid email.";
+  } else if (exceeds(email, LIMITS.email)) {
+    errors.email = `Email must be ${LIMITS.email} characters or fewer.`;
   }
 
   if (!problem) {
     errors.problem = "Tell us what's stuck.";
   } else if (problem.length < 10) {
     errors.problem = "Please give us a little more detail.";
+  } else if (exceeds(problem, LIMITS.problem)) {
+    errors.problem = `Problem description must be ${LIMITS.problem} characters or fewer.`;
   }
 
+  // Optional fields
+  if (exceeds(company, LIMITS.company)) {
+    errors.company = `Company must be ${LIMITS.company} characters or fewer.`;
+  }
+
+  if (exceeds(context, LIMITS.context)) {
+    errors.context = `Additional context must be ${LIMITS.context} characters or fewer.`;
+  }
+
+  // Enum-like values
   if (buildType && !BUILD_TYPES.has(buildType)) {
     errors.buildType = "Invalid build type.";
   }
@@ -100,7 +127,6 @@ export async function handleCreateSummonLead(
     return;
   }
 
-  // Business/database operation lives in the service
   const lead = await createSummonLead({
     name,
     email,
