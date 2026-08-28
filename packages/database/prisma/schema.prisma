@@ -8,3 +8,22 @@ generator client {
 datasource db {
   provider = "postgresql"
 }
+
+model Lead {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  company   String?
+  problem   String
+
+  buildType String?
+  timeline  String?
+  budget    String?
+  context   String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([email])
+  @@index([createdAt])
+}
