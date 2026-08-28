@@ -1,9 +1,9 @@
 import { Router } from "express";
 
-import { createSummonLead } from "../controllers/summon.controller.js";
+import { handleCreateSummonLead } from "../controllers/summon.controller.js";
 
 const router = Router();
 
-router.post("/", createSummonLead);
+router.post("/", handleCreateSummonLead);
 
 export { router as summonRoutes };

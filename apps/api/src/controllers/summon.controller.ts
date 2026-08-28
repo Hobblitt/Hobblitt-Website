@@ -1,6 +1,6 @@
 import type { Request, Response } from "express";
 
-import { prisma } from "@hobblitt/database";
+import { createSummonLead } from "../services/summon.service.js";
 
 type SummonRequestBody = {
   name?: unknown;
@@ -44,7 +44,7 @@ function stringValue(value: unknown): string {
   return typeof value === "string" ? value.trim() : "";
 }
 
-export async function createSummonLead(
+export async function handleCreateSummonLead(
   req: Request,
   res: Response,
 ): Promise<void> {
@@ -99,21 +99,15 @@ export async function createSummonLead(
       return;
     }
 
-    const lead = await prisma.lead.create({
-      data: {
-        name,
-        email,
-        company: company || null,
-        problem,
-        buildType: buildType || null,
-        timeline: timeline || null,
-        budget: budget || null,
-        context: context || null,
-      },
-      select: {
-        id: true,
-        createdAt: true,
-      },
+    const lead = await createSummonLead({
+      name,
+      email,
+      company: company || null,
+      problem,
+      buildType: buildType || null,
+      timeline: timeline || null,
+      budget: budget || null,
+      context: context || null,
     });
 
     res.status(201).json({
