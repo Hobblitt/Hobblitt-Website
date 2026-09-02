@@ -1,17 +1,18 @@
 import cors from "cors";
 import express from "express";
 
+import { env } from "./config/env.js";
 import { errorHandler } from "./middleware/error_handler.js";
 import { notFound } from "./middleware/not-found.js";
 import { apiRouter } from "./routes/index.js";
 
 export const app = express();
 
-const allowedOrigin = process.env.WEB_URL ?? "http://localhost:3000";
+app.disable("x-powered-by");
 
 app.use(
   cors({
-    origin: allowedOrigin,
+    origin: env.webUrl,
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type"],
   }),
