@@ -19,6 +19,7 @@ export type SummonApiResult =
 
 export async function submitSummonLead(
   values: SummonFormValues,
+  website: string,
 ): Promise<SummonApiResult> {
   try {
     const response = await fetch(`${API_URL}/api/summon`, {
@@ -26,7 +27,10 @@ export async function submitSummonLead(
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(values),
+      body: JSON.stringify({
+        ...values,
+        website,
+      }),
     });
 
     const data = await response.json().catch(() => null);
