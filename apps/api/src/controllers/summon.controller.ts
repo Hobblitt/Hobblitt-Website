@@ -11,6 +11,7 @@ type SummonRequestBody = {
   timeline?: unknown;
   budget?: unknown;
   context?: unknown;
+  website?: unknown;
 };
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -70,6 +71,7 @@ export async function handleCreateSummonLead(
   const timeline = stringValue(body.timeline);
   const budget = stringValue(body.budget);
   const context = stringValue(body.context);
+  const website = stringValue(body.website);
 
   const errors: Record<string, string> = {};
 
@@ -78,6 +80,15 @@ export async function handleCreateSummonLead(
     errors.name = "Tell us who we're talking to.";
   } else if (exceeds(name, LIMITS.name)) {
     errors.name = `Name must be ${LIMITS.name} characters or fewer.`;
+  }
+
+
+  if (website) {
+    res.status(400).json({
+      success: false,
+      message: "Invalid submission.",
+    });
+    return;
   }
 
   if (!email) {
