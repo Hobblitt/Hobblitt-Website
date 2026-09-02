@@ -7,7 +7,7 @@ import { env } from "./config/env.js";
 
 const server = createServer(app);
 
-server.listen(env.port, () => {
+server.listen(env.port, "0.0.0.0", () => {
   console.log(`Hobblitt API listening on port ${env.port}`);
 });
 
