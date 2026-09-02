@@ -1,11 +1,40 @@
-import dotenv from "dotenv";
+import { createServer } from "node:http";
+
+import { prisma } from "@hobblitt/database";
 
 import { app } from "./app.js";
+import { env } from "./config/env.js";
 
-dotenv.config();
+const server = createServer(app);
 
-const PORT = Number(process.env.PORT) || 4000;
+server.listen(env.port, () => {
+  console.log(`Hobblitt API running on http://localhost:${env.port}`);
+});
 
-app.listen(PORT, () => {
-  console.log(`Hobblitt API running on http://localhost:${PORT}`);
+async function shutdown(signal: string) {
+  console.log(`${signal} received. Shutting down...`);
+
+  server.close(async (serverError) => {
+    if (serverError) {
+      console.error("Failed to close HTTP server:", serverError);
+      process.exitCode = 1;
+      return;
+    }
+
+    try {
+      await prisma.$disconnect();
+      console.log("Database connection closed.");
+    } catch (error) {
+      console.error("Failed to disconnect Prisma:", error);
+      process.exitCode = 1;
+    }
+  });
+}
+
+process.on("SIGINT", () => {
+  void shutdown("SIGINT");
+});
+
+process.on("SIGTERM", () => {
+  void shutdown("SIGTERM");
 });
