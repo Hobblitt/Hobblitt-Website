@@ -14,7 +14,7 @@ export const siteConfig = {
 
   social: {
     linkedin: "https://www.linkedin.com/company/hobblitt",
-    instagram: "https://www.instagram.com/hobblitt",
+    instagram: "https://www.instagram.com/hobblitt_",
     x: "https://x.com/hobblitt",
   },
 } as const;
